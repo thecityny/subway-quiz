@@ -2,8 +2,11 @@ import { useState } from "react";
 import {
   Borough,
   getFullBoroughName,
+  getTrainsForBorough,
   MTA_BOROUGHS,
   MTA_STATIONS,
+  MTA_TRAINS,
+  Train,
 } from "../data/stations";
 
 type QuestionProps = {
@@ -11,11 +14,11 @@ type QuestionProps = {
   submitAnswer: (a: number) => void;
 };
 
-const ColoredLineIcons: React.FC<{ lines: string }> = ({ lines }) => (
+const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
   <span>
-    {lines.split(" ").map((line) => (
-      <span className={`line-icon line-${line}`} key={line}>
-        {line}
+    {trains.map((train) => (
+      <span className={`line-icon line-${train}`} key={train}>
+        {train}
       </span>
     ))}
   </span>
@@ -29,6 +32,7 @@ export const Question: React.FC<QuestionProps> = ({
   const [boroughSelection, setBoroughSelection] = useState<Borough | null>(
     null
   );
+  const [trainSelection, setTrainSelection] = useState<Train | null>(null);
 
   return (
     <div>
@@ -48,8 +52,26 @@ export const Question: React.FC<QuestionProps> = ({
       ))}
       <br />
       {boroughSelection &&
+        getTrainsForBorough(boroughSelection).map((train, i) => (
+          <div key={i}>
+            <label>
+              <input
+                type="radio"
+                value={train}
+                checked={trainSelection === train}
+                onChange={() => setTrainSelection(train)}
+              />
+              <ColoredLineIcons trains={[train]} />
+            </label>
+          </div>
+        ))}
+      <br />
+      {boroughSelection &&
+        trainSelection &&
         MTA_STATIONS.filter(
-          (station) => station.borough === boroughSelection
+          (station) =>
+            station.borough === boroughSelection &&
+            station.trains.includes(trainSelection)
         ).map((station, i) => (
           <div key={i}>
             <label>
@@ -59,7 +81,7 @@ export const Question: React.FC<QuestionProps> = ({
                 checked={stationSelection === station.stationId}
                 onChange={() => setStationSelection(station.stationId)}
               />
-              {station.name} <ColoredLineIcons lines={station.lines} />
+              {station.name} <ColoredLineIcons trains={station.trains} />
             </label>
           </div>
         ))}

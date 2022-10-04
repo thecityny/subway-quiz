@@ -5,13 +5,12 @@ import {
   getTrainsForBorough,
   MTA_BOROUGHS,
   MTA_STATIONS,
-  MTA_TRAINS,
   Train,
 } from "../data/stations";
 
 type QuestionProps = {
   questionNumber: number;
-  submitAnswer: (a: number) => void;
+  submitGuess: (a: number) => void;
 };
 
 const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
@@ -26,7 +25,7 @@ const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
 
 export const Question: React.FC<QuestionProps> = ({
   questionNumber,
-  submitAnswer,
+  submitGuess,
 }) => {
   const [stationSelection, setStationSelection] = useState(0);
   const [boroughSelection, setBoroughSelection] = useState<Borough | null>(
@@ -86,7 +85,14 @@ export const Question: React.FC<QuestionProps> = ({
           </div>
         ))}
       {stationSelection > 0 && (
-        <button onClick={() => submitAnswer(stationSelection)}>
+        <button
+          onClick={() => {
+            submitGuess(stationSelection);
+            setBoroughSelection(null);
+            setTrainSelection(null);
+            setStationSelection(0);
+          }}
+        >
           Next Question
         </button>
       )}

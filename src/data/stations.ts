@@ -138,6 +138,9 @@ export type Station = {
   borough: Borough;
 };
 
+export const getStationFromId = (id: number) =>
+  MTA_STATIONS.find((station) => station.stationId === id);
+
 export const MTA_STATIONS: Station[] = [
   {
     stationId: 1,

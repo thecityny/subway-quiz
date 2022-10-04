@@ -1,0 +1,69 @@
+// Subway Colors:
+
+.line-icon {
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5em;
+  margin: 2px 2px 4px 0;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+}
+
+.line-A,
+.line-C,
+.line-E {
+  background: #0039a6;
+}
+
+.line-B,
+.line-D,
+.line-F,
+.line-M {
+  background: #ff6319;
+}
+
+.line-G {
+  background: #6cbe45;
+}
+
+.line-J,
+.line-Z {
+  background: #996633;
+}
+
+.line-L {
+  background: #a7a9ac;
+}
+
+.line-N,
+.line-Q,
+.line-R,
+.line-W {
+  background: #fccc0a;
+  color: #111;
+}
+
+.line-S {
+  background: #808183;
+}
+
+.line-1,
+.line-2,
+.line-3 {
+  background: #ee352e;
+}
+
+.line-4,
+.line-5,
+.line-6 {
+  background: #00933c;
+}
+
+.line-7 {
+  background: #b933ad;
+}

@@ -1,3 +1,20 @@
+export type Borough = "M" | "Bx" | "Bk" | "Q" | "SI";
+
+export const MTA_BOROUGHS: Borough[] = ["M", "Bx", "Bk", "Q", "SI"];
+
+export const getFullBoroughName = (b: Borough) =>
+  b === "M"
+    ? "Manhattan"
+    : b === "Bx"
+    ? "Bronx"
+    : b === "Bk"
+    ? "Brooklyn"
+    : b === "Q"
+    ? "Queens"
+    : b === "SI"
+    ? "Staten Island"
+    : "";
+
 export type Station = {
   stationId: number;
   name: string;

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
 
+import "./styles/styles.scss";
+
 export const App = () => {
   const [questionNumber, updateQuestionNumber] = useState(0);
   const moveToNextQuestion = () => updateQuestionNumber(questionNumber + 1);

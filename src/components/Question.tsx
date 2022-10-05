@@ -60,8 +60,7 @@ export const Question: React.FC<QuestionProps> = ({
             onClear={() => submitGuess(0, questionNumber)}
             inputSearchString={searchText}
             placeholder="Search stations"
-            maxResults={6}
-            autoFocus
+            maxResults={5}
             showIcon={false}
             formatResult={formatResult}
           />

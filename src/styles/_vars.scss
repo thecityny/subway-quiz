@@ -1,0 +1,82 @@
+$sans: "Sharp Grotesk", Helvetica, sans-serif;
+$serif: "Georgia", serif;
+$mono: "Courier", monospace;
+
+@mixin boldface() {
+  font-family: $sans;
+  font-weight: 900;
+}
+
+@mixin boldface-ital() {
+  font-family: $sans;
+  font-weight: 900;
+  font-style: italic;
+}
+
+@mixin medface() {
+  font-family: $sans;
+  font-weight: 700;
+}
+
+@mixin medface-ital() {
+  font-family: $sans;
+  font-weight: 700;
+  font-style: italic;
+}
+
+@mixin bookface() {
+  font-family: $sans;
+  font-weight: 400;
+}
+
+@mixin ital() {
+  font-family: $sans;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin lightface() {
+  font-family: $sans;
+  font-weight: 200;
+}
+
+@mixin lightface-ital() {
+  font-family: $sans;
+  font-weight: 200;
+  font-style: italic;
+}
+
+// https://medium.com/$matuzo/writing-css-with-accessibility-in-mind-8514a0007939
+// hide content visually and still make is accessible to assistive technology and search engines
+@mixin visually-hidden() {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+// https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+// make lists accessible
+@mixin plain-list() {
+  list-style: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E");
+  padding-left: 0;
+}
+/*
+ * Colors
+ */
+$city-white: #ebebeb;
+$city-grey: #8c8c8c;
+$city-black: #111111;
+$city-orange: #fa7416;
+$city-purple: #a9328a;
+$city-green: #36c269;
+$city-blue: #0c71fa;
+$city-gold: #fcc32c;
+$city-politics-red: #d02d3c;
+$city-politics-blue: #214da5;

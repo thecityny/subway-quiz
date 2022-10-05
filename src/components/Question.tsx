@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 import {
-  Borough,
   getFullBoroughName,
-  getTrainsForBorough,
-  MTA_BOROUGHS,
   MTA_STATIONS,
+  Station,
   Train,
 } from "../data/stations";
+import { getQuizContent } from "../data/quiz-content";
 
 type QuestionProps = {
   questionNumber: number;
@@ -27,69 +30,47 @@ export const Question: React.FC<QuestionProps> = ({
   questionNumber,
   submitGuess,
 }) => {
+  const content = getQuizContent()[questionNumber - 1];
+
   const [stationSelection, setStationSelection] = useState(0);
-  const [boroughSelection, setBoroughSelection] = useState<Borough | null>(
-    null
-  );
-  const [trainSelection, setTrainSelection] = useState<Train | null>(null);
+
+  const handleOnSelect = (item: Station) => {
+    setStationSelection(item.id);
+  };
+
+  const formatResult = (item: Station) => {
+    return (
+      <p>
+        {item.name} {getFullBoroughName(item.borough)}{" "}
+        <ColoredLineIcons trains={item.trains} />
+      </p>
+    );
+  };
 
   return (
     <div>
       <h1>Question {questionNumber}</h1>
-      {MTA_BOROUGHS.map((borough, i) => (
-        <div key={i}>
-          <label>
-            <input
-              type="radio"
-              value={borough}
-              checked={boroughSelection === borough}
-              onChange={() => setBoroughSelection(borough)}
-            />
-            {getFullBoroughName(borough)}
-          </label>
-        </div>
-      ))}
+      <LazyLoadImage
+        src={content.photo}
+        width={600}
+        height={400}
+        effect="blur"
+      />
       <br />
-      {boroughSelection &&
-        getTrainsForBorough(boroughSelection).map((train, i) => (
-          <div key={i}>
-            <label>
-              <input
-                type="radio"
-                value={train}
-                checked={trainSelection === train}
-                onChange={() => setTrainSelection(train)}
-              />
-              <ColoredLineIcons trains={[train]} />
-            </label>
-          </div>
-        ))}
+      {content.caption}
       <br />
-      {boroughSelection &&
-        trainSelection &&
-        MTA_STATIONS.filter(
-          (station) =>
-            station.borough === boroughSelection &&
-            station.trains.includes(trainSelection)
-        ).map((station, i) => (
-          <div key={i}>
-            <label>
-              <input
-                type="radio"
-                value={station.stationId}
-                checked={stationSelection === station.stationId}
-                onChange={() => setStationSelection(station.stationId)}
-              />
-              {station.name} <ColoredLineIcons trains={station.trains} />
-            </label>
-          </div>
-        ))}
+      <ReactSearchAutocomplete
+        items={MTA_STATIONS}
+        onSelect={handleOnSelect}
+        placeholder="Search stations"
+        maxResults={6}
+        autoFocus
+        formatResult={formatResult}
+      />
       {stationSelection > 0 && (
         <button
           onClick={() => {
             submitGuess(stationSelection);
-            setBoroughSelection(null);
-            setTrainSelection(null);
             setStationSelection(0);
           }}
         >

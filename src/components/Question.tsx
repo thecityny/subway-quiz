@@ -13,10 +13,10 @@ import { getQuizContent } from "../data/quiz-content";
 
 type QuestionProps = {
   questionNumber: number;
-  submitGuess: (a: number) => void;
+  submitGuess: (a: number, qn: number) => void;
 };
 
-const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
+export const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
   <span>
     {trains.map((train) => (
       <span className={`line-icon line-${train}`} key={train}>
@@ -32,54 +32,42 @@ export const Question: React.FC<QuestionProps> = ({
 }) => {
   const content = getQuizContent()[questionNumber - 1];
 
-  const [stationSelection, setStationSelection] = useState(0);
-
   const [searchText, setSearchText] = useState("");
 
   const formatResult = (item: Station) => {
     return (
       <p>
-        {item.name} {getFullBoroughName(item.borough)}{" "}
-        <ColoredLineIcons trains={item.trains} />
+        {item.name} <ColoredLineIcons trains={item.trains} />{" "}
+        <span className="light-text">{getFullBoroughName(item.borough)}</span>
       </p>
     );
   };
 
   return (
-    <div>
-      <h1>Question {questionNumber}</h1>
-      <LazyLoadImage
-        src={content.photo}
-        width={600}
-        height={400}
-        effect="blur"
-      />
-      <br />
-      {content.caption}
-      <br />
-      <ReactSearchAutocomplete
-        items={MTA_STATIONS}
-        onSelect={(item) => setStationSelection(item.id)}
-        onSearch={(input) => setSearchText(input)}
-        onClear={() => setStationSelection(0)}
-        inputSearchString={searchText}
-        placeholder="Search stations"
-        maxResults={6}
-        autoFocus
-        showIcon={false}
-        formatResult={formatResult}
-      />
-      {stationSelection > 0 && (
-        <button
-          onClick={() => {
-            submitGuess(stationSelection);
-            setSearchText("");
-            setStationSelection(0);
-          }}
-        >
-          Next Question
-        </button>
-      )}
+    <div className="columns question py-6">
+      <div className="column is-2 has-text-centered">
+        <span className="title">#{questionNumber}</span>
+      </div>
+      <div className="column is-8">
+        <LazyLoadImage src={content.photo} width="100%" effect="blur" />
+        <div className="container my-5 is-size-4">{content.caption}</div>
+        <p className="mb-2">Your guess:</p>
+        <div className="station-search-bar">
+          <ReactSearchAutocomplete
+            items={MTA_STATIONS}
+            onSelect={(result) => submitGuess(result.id, questionNumber)}
+            onSearch={(input) => setSearchText(input)}
+            onClear={() => submitGuess(0, questionNumber)}
+            inputSearchString={searchText}
+            placeholder="Search stations"
+            maxResults={6}
+            autoFocus
+            showIcon={false}
+            formatResult={formatResult}
+          />
+        </div>
+        <p></p>
+      </div>
     </div>
   );
 };

@@ -37,8 +37,7 @@ export const Question: React.FC<QuestionProps> = ({
   const formatResult = (item: Station) => {
     return (
       <p>
-        {item.name} <ColoredLineIcons trains={item.trains} />
-        <br />
+        {item.name} <ColoredLineIcons trains={item.trains} />{" "}
         <span className="light-text">{getFullBoroughName(item.borough)}</span>
       </p>
     );

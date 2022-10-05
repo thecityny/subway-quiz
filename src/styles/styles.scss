@@ -2,6 +2,12 @@
 @import "_vars.scss";
 @import "../../node_modules/bulma/bulma.sass";
 
+// GENERAL:
+
+body {
+  padding: 0 1rem;
+}
+
 // TYPOGRAPHY:
 
 h1,
@@ -42,6 +48,15 @@ h2,
   > div > .wrapper {
     border-radius: 5px;
     z-index: 5;
+
+    input {
+      font-family: $sans;
+      color: #333;
+    }
+
+    li .ellipsis {
+      white-space: normal;
+    }
   }
 }
 

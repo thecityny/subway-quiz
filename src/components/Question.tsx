@@ -34,9 +34,7 @@ export const Question: React.FC<QuestionProps> = ({
 
   const [stationSelection, setStationSelection] = useState(0);
 
-  const handleOnSelect = (item: Station) => {
-    setStationSelection(item.id);
-  };
+  const [searchText, setSearchText] = useState("");
 
   const formatResult = (item: Station) => {
     return (
@@ -61,16 +59,21 @@ export const Question: React.FC<QuestionProps> = ({
       <br />
       <ReactSearchAutocomplete
         items={MTA_STATIONS}
-        onSelect={handleOnSelect}
+        onSelect={(item) => setStationSelection(item.id)}
+        onSearch={(input) => setSearchText(input)}
+        onClear={() => setStationSelection(0)}
+        inputSearchString={searchText}
         placeholder="Search stations"
         maxResults={6}
         autoFocus
+        showIcon={false}
         formatResult={formatResult}
       />
       {stationSelection > 0 && (
         <button
           onClick={() => {
             submitGuess(stationSelection);
+            setSearchText("");
             setStationSelection(0);
           }}
         >

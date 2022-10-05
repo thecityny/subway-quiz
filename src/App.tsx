@@ -1,20 +1,9 @@
 import { useState } from "react";
 import { Question } from "./components/Question";
-import { getStationFromId } from "./data/stations";
+import { Results } from "./components/Results";
+import { getQuizContent } from "./data/quiz-content";
 
 import "./styles/styles.scss";
-
-const QUIZ_ANSWERS = [636, 20, 609];
-
-const scoreUserGuesses = (guesses: number[]) => {
-  let score = 0;
-  guesses.forEach((guess, i) => {
-    if (guess === QUIZ_ANSWERS[i]) {
-      score++;
-    }
-  });
-  return score;
-};
 
 export const App = () => {
   const [questionNumber, updateQuestionNumber] = useState(0);
@@ -26,7 +15,7 @@ export const App = () => {
     moveToNextQuestion();
   };
 
-  const numberOfQuestions = QUIZ_ANSWERS.length;
+  const numberOfQuestions = getQuizContent().length;
 
   return (
     <div className="App">
@@ -40,19 +29,7 @@ export const App = () => {
         <Question questionNumber={questionNumber} submitGuess={submitGuess} />
       )}
       {questionNumber === numberOfQuestions + 1 && (
-        <div>
-          <p>
-            You scored a {scoreUserGuesses(guesses)} out of {numberOfQuestions}!
-          </p>
-          <p>{guesses}</p>
-          {QUIZ_ANSWERS.map((answer, i) => (
-            <p>
-              For question {i + 1}, you answered{" "}
-              {getStationFromId(guesses[i])?.name}. The correct answer was{" "}
-              {getStationFromId(answer)?.name}.
-            </p>
-          ))}
-        </div>
+        <Results userGuesses={guesses} />
       )}
     </div>
   );

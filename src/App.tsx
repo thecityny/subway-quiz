@@ -42,7 +42,7 @@ export const App = () => {
         <div className="hero-body">
           <div className="container has-text-centered">
             <h1 className="title">Name That Subway Station</h1>
-            <p className="subtitle">By: Jose Martinez</p>
+            <p className="subtitle">Jose Martinez</p>
           </div>
         </div>
       </div>

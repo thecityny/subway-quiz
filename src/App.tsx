@@ -38,10 +38,14 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div>
-        <p>Welcome to THE CITY's subway quiz!</p>
+      <div className="hero is-fullheight">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title">Name That Subway Station</h1>
+            <p className="subtitle">By: Jose Martinez</p>
+          </div>
+        </div>
       </div>
-      {JSON.stringify(scorecard)}
       {blankScorecard.map(({ questionNumber }) => (
         <Question
           key={questionNumber}
@@ -49,18 +53,27 @@ export const App = () => {
           submitGuess={submitGuess}
         />
       ))}
-      {questionsLeftToAnswer.length > 0 ? (
-        <p>
-          Please go back and answer{" "}
-          {questionsLeftToAnswer.length > 1
-            ? `questions ${questionsLeftToAnswer
-                .slice(0, -1)
-                .join(", ")}, and ${questionsLeftToAnswer.slice(-1)}`
-            : `question ${questionsLeftToAnswer}`}
-        </p>
-      ) : (
-        <Results scorecard={scorecard} />
-      )}
+      <div className="hero">
+        <div className="hero-body">
+          <div className="container has-text-centered">
+            <h1 className="title is-spaced">Results</h1>
+            {questionsLeftToAnswer.length > 0 ? (
+              <p className="subtitle">
+                Oops! You're not finished with the quiz yet.
+                <br />
+                Please go back and answer{" "}
+                {questionsLeftToAnswer.length > 1
+                  ? `questions ${questionsLeftToAnswer
+                      .slice(0, -1)
+                      .join(", ")}, and ${questionsLeftToAnswer.slice(-1)}`
+                  : `question ${questionsLeftToAnswer}`}
+              </p>
+            ) : (
+              <Results scorecard={scorecard} />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

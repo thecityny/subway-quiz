@@ -1,7 +1,51 @@
 @import "_fonts.scss";
 @import "_vars.scss";
+@import "../../node_modules/bulma/bulma.sass";
 
-// Subway Colors:
+// TYPOGRAPHY:
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: $sans;
+  color: #666;
+}
+
+h1,
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #000;
+}
+
+h2,
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333;
+}
+
+.light-text {
+  font-weight: 200;
+  color: #666;
+}
+
+// QUESTIONS:
+
+.station-search-bar {
+  max-width: 500px;
+  > div > .wrapper {
+    border-radius: 5px;
+    z-index: 5;
+  }
+}
+
+// SUBWAY COLORS:
 
 .line-icon {
   width: 1.5em;
@@ -13,6 +57,8 @@
   text-align: center;
   line-height: 1.5em;
   margin: 2px 2px 4px 0;
+  font-size: 12px;
+  transform: translateY(-1px);
   font-weight: bold;
   font-family: Helvetica, sans-serif;
 }
@@ -69,4 +115,9 @@
 
 .line-7 {
   background: #b933ad;
+}
+
+.line-SIR {
+  width: 1.6rem;
+  border-radius: 45%;
 }

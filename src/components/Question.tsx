@@ -13,7 +13,7 @@ import { getQuizContent } from "../data/quiz-content";
 
 type QuestionProps = {
   questionNumber: number;
-  submitGuess: (a: number) => void;
+  submitGuess: (a: number, qn: number) => void;
 };
 
 const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
@@ -31,8 +31,6 @@ export const Question: React.FC<QuestionProps> = ({
   submitGuess,
 }) => {
   const content = getQuizContent()[questionNumber - 1];
-
-  const [stationSelection, setStationSelection] = useState(0);
 
   const [searchText, setSearchText] = useState("");
 
@@ -59,9 +57,9 @@ export const Question: React.FC<QuestionProps> = ({
       <br />
       <ReactSearchAutocomplete
         items={MTA_STATIONS}
-        onSelect={(item) => setStationSelection(item.id)}
+        onSelect={(result) => submitGuess(result.id, questionNumber)}
         onSearch={(input) => setSearchText(input)}
-        onClear={() => setStationSelection(0)}
+        onClear={() => submitGuess(0, questionNumber)}
         inputSearchString={searchText}
         placeholder="Search stations"
         maxResults={6}
@@ -69,17 +67,6 @@ export const Question: React.FC<QuestionProps> = ({
         showIcon={false}
         formatResult={formatResult}
       />
-      {stationSelection > 0 && (
-        <button
-          onClick={() => {
-            submitGuess(stationSelection);
-            setSearchText("");
-            setStationSelection(0);
-          }}
-        >
-          Next Question
-        </button>
-      )}
     </div>
   );
 };

@@ -5,31 +5,61 @@ import { getQuizContent } from "./data/quiz-content";
 
 import "./styles/styles.scss";
 
-export const App = () => {
-  const [questionNumber, updateQuestionNumber] = useState(0);
-  const moveToNextQuestion = () => updateQuestionNumber(questionNumber + 1);
+export type AnswerKey = {
+  questionNumber: number;
+  usersGuess: number;
+  correctAnswer: number;
+};
 
-  const [guesses, updateGuesses] = useState<number[]>([]);
-  const submitGuess = (usersGuess: number) => {
-    updateGuesses([...guesses, usersGuess]);
-    moveToNextQuestion();
+export const App = () => {
+  let blankScorecard: AnswerKey[] = getQuizContent().map(
+    ({ correctAnswer, ...rest }, i) => ({
+      questionNumber: i + 1,
+      usersGuess: 0,
+      correctAnswer,
+    })
+  );
+
+  const [scorecard, updateScorecard] = useState<AnswerKey[]>(blankScorecard);
+  const submitGuess = (usersGuess: number, questionNumber: number) => {
+    updateScorecard((currentGuesses) =>
+      currentGuesses.map((answerKey) => {
+        if (answerKey.questionNumber === questionNumber) {
+          return { ...answerKey, usersGuess };
+        }
+        return answerKey;
+      })
+    );
   };
 
-  const numberOfQuestions = getQuizContent().length;
+  const questionsLeftToAnswer = scorecard
+    .filter((answerKey) => answerKey.usersGuess === 0)
+    .map((answerKey) => answerKey.questionNumber);
 
   return (
     <div className="App">
-      {questionNumber === 0 && (
-        <div>
-          <p>Welcome to THE CITY's subway quiz!</p>
-          <button onClick={moveToNextQuestion}>Let's Start</button>
-        </div>
-      )}
-      {questionNumber > 0 && questionNumber <= numberOfQuestions && (
-        <Question questionNumber={questionNumber} submitGuess={submitGuess} />
-      )}
-      {questionNumber === numberOfQuestions + 1 && (
-        <Results userGuesses={guesses} />
+      <div>
+        <p>Welcome to THE CITY's subway quiz!</p>
+      </div>
+      {JSON.stringify(scorecard)}
+      {blankScorecard.map(({ questionNumber }) => (
+        <Question
+          key={questionNumber}
+          questionNumber={questionNumber}
+          submitGuess={submitGuess}
+        />
+      ))}
+      {questionsLeftToAnswer.length > 0 ? (
+        <p>
+          Please go back and answer{" "}
+          {questionsLeftToAnswer.length > 1
+            ? `questions ${questionsLeftToAnswer
+                .slice(0, -1)
+                .join(", ")}, and ${questionsLeftToAnswer.slice(-1)}`
+            : `question ${questionsLeftToAnswer}`}
+        </p>
+      ) : (
+        <Results scorecard={scorecard} />
       )}
     </div>
   );

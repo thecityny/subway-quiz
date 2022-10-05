@@ -1,16 +1,12 @@
-import { getQuizContent } from "../data/quiz-content";
+import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
 
-export const Results: React.FC<{ userGuesses: number[] }> = ({
-  userGuesses,
+export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
+  scorecard,
 }) => {
-  const quizAnswers = getQuizContent().map(
-    (question) => question.correctAnswer
-  );
-
   let score = 0;
-  userGuesses.forEach((guess, i) => {
-    if (guess === quizAnswers[i]) {
+  scorecard.forEach((answer) => {
+    if (answer.usersGuess === answer.correctAnswer) {
       score++;
     }
   });
@@ -18,13 +14,13 @@ export const Results: React.FC<{ userGuesses: number[] }> = ({
   return (
     <div>
       <p>
-        You scored a {score} out of {quizAnswers.length}!
+        You scored a {score} out of {scorecard.length}!
       </p>
-      {quizAnswers.map((answer, i) => (
-        <p>
+      {scorecard.map((answer, i) => (
+        <p key={i}>
           For question {i + 1}, you answered{" "}
-          {getStationFromId(userGuesses[i])?.name}. The correct answer was{" "}
-          {getStationFromId(answer)?.name}.
+          {getStationFromId(answer.usersGuess)?.name}. The correct answer was{" "}
+          {getStationFromId(answer.correctAnswer)?.name}.
         </p>
       ))}
     </div>

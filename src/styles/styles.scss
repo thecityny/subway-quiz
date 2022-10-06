@@ -5,8 +5,30 @@
 // GENERAL:
 
 body {
-  padding: 0 1rem;
-  background-color: #ebebeb;
+  background-color: $mta-background;
+}
+
+.hero.is-fullheight {
+  .hero-body .container {
+    background-color: $mta-background-transparent;
+    padding: 2rem;
+    max-width: 600px;
+  }
+  .lazy-load-image-background {
+    position: absolute;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.question {
+  .column.is-7 {
+    border-right: 15px solid $mta-line-color;
+  }
 }
 
 // TYPOGRAPHY:
@@ -32,9 +54,13 @@ h1,
 
 h2,
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   font-weight: 400;
-  color: #333;
+  color: #000;
+}
+
+p {
+  font-size: 1.25rem;
 }
 
 .light-text {
@@ -44,19 +70,38 @@ h2,
 
 // QUESTIONS:
 
-.station-search-bar {
-  max-width: 500px;
-  > div > .wrapper {
-    border-radius: 5px;
-    z-index: 5;
+.question {
+  .column {
+    padding: 12rem 3rem 0rem 3rem;
+  }
 
-    input {
-      font-family: $sans;
-      color: #333;
-    }
+  .station-search-bar {
+    max-width: 500px;
+    > div > .wrapper {
+      color: black;
+      border-radius: 5px;
+      z-index: 5;
+      border: 2px solid black;
+      background: transparent;
 
-    li .ellipsis {
-      white-space: normal;
+      > div:not(:first-child) {
+        background-color: $mta-background;
+        z-index: 10;
+        color: black;
+      }
+
+      > div > div > svg {
+        fill: black;
+      }
+
+      input {
+        font-family: $sans;
+        color: #333;
+      }
+
+      li .ellipsis {
+        white-space: normal;
+      }
     }
   }
 }

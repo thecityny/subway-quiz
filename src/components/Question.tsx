@@ -36,7 +36,7 @@ export const Question: React.FC<QuestionProps> = ({
 
   const formatResult = (item: Station) => {
     return (
-      <p>
+      <p className="has-text-black">
         {item.name} <ColoredLineIcons trains={item.trains} />{" "}
         <span className="light-text">{getFullBoroughName(item.borough)}</span>
       </p>
@@ -44,13 +44,17 @@ export const Question: React.FC<QuestionProps> = ({
   };
 
   return (
-    <div className="columns question py-6">
-      <div className="column is-2 has-text-centered">
-        <span className="title">#{questionNumber}</span>
-      </div>
-      <div className="column is-8">
+    <div className="columns question">
+      <div className="column is-7 has-text-centered">
         <LazyLoadImage src={content.photo} width="100%" effect="blur" />
-        <div className="container my-5 is-size-4">{content.caption}</div>
+      </div>
+      <div className="column is-5">
+        <div className="title">
+          #{questionNumber}{" "}
+          <span className="has-text-black has-text-weight-normal">
+            {content.caption}
+          </span>
+        </div>
         <p className="mb-2">Your guess:</p>
         <div className="station-search-bar">
           <ReactSearchAutocomplete

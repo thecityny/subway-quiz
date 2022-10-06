@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Question } from "./components/Question";
 import { Results } from "./components/Results";
 import { getQuizContent } from "./data/quiz-content";
@@ -39,13 +40,24 @@ export const App = () => {
   return (
     <div className="App">
       <div className="hero is-fullheight">
+        <LazyLoadImage
+          src={require("./assets/mta-map.jpg")}
+          width="100%"
+          height="100%"
+          effect="blur"
+        />
         <div className="hero-body">
           <div className="container has-text-centered">
             <h1 className="title">Name That Subway Station</h1>
-            <p className="subtitle">Jose Martinez</p>
+            <p className="subtitle">
+              A quiz to test your knowledge of NYC transit
+            </p>
+            <br />
+            <p className="byline">By Jose Martinez</p>
           </div>
         </div>
       </div>
+
       {blankScorecard.map(({ questionNumber }) => (
         <Question
           key={questionNumber}
@@ -53,6 +65,7 @@ export const App = () => {
           submitGuess={submitGuess}
         />
       ))}
+
       <div className="hero">
         <div className="hero-body">
           <div className="container has-text-centered">

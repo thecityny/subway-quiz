@@ -9,6 +9,7 @@ body {
 }
 
 .hero.is-fullheight {
+  z-index: 1;
   .hero-body .container {
     background-color: $mta-background-transparent;
     padding: 2rem;
@@ -86,6 +87,26 @@ p {
           height: 80px;
           background: white;
           border: 10px solid $mta-black;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  &.is-mobile .column {
+    padding: 1.5rem;
+    &.is-1 {
+      .subway-line {
+        width: 8px;
+        height: 100%;
+        background-color: $mta-line-color;
+
+        .subway-station {
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          background: white;
+          border: 3px solid $mta-black;
           border-radius: 50%;
         }
       }

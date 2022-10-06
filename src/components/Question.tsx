@@ -44,38 +44,73 @@ export const Question: React.FC<QuestionProps> = ({
   };
 
   return (
-    <div className="columns question is-align-items-center">
-      <div className="column is-7 has-text-centered">
-        <LazyLoadImage src={content.photo} width="100%" effect="blur" />
-      </div>
-      <div className="column is-1">
-        <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
-          <div className="subway-station" />
+    <>
+      <div className="columns question is-align-items-center is-hidden-mobile">
+        {/* DESKTOP AND TABLET COLUMNS: */}
+        <div className="column is-7 has-text-centered">
+          <LazyLoadImage src={content.photo} width="100%" effect="blur" />
+        </div>
+        <div className="column is-1">
+          <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+            <div className="subway-station" />
+          </div>
+        </div>
+        <div className="column is-4">
+          <div className="title">
+            #{questionNumber}{" "}
+            <span className="ml-2 has-text-black has-text-weight-normal">
+              {content.caption}
+            </span>
+          </div>
+          <p className="mb-2">Your guess:</p>
+          <div className="station-search-bar">
+            <ReactSearchAutocomplete
+              items={MTA_STATIONS}
+              onSelect={(result) => submitGuess(result.id, questionNumber)}
+              onSearch={(input) => setSearchText(input)}
+              onClear={() => submitGuess(0, questionNumber)}
+              inputSearchString={searchText}
+              placeholder="Search stations"
+              maxResults={5}
+              showIcon={false}
+              formatResult={formatResult}
+            />
+          </div>
         </div>
       </div>
-      <div className="column is-4">
-        <div className="title">
-          #{questionNumber}{" "}
-          <span className="ml-2 has-text-black has-text-weight-normal">
-            {content.caption}
-          </span>
+      {/* MOBILE COLUMNS: */}
+      <div className="columns question is-mobile is-hidden-tablet">
+        <div className="column is-1">
+          <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+            <div className="subway-station" />
+          </div>
         </div>
-        <p className="mb-2">Your guess:</p>
-        <div className="station-search-bar">
-          <ReactSearchAutocomplete
-            items={MTA_STATIONS}
-            onSelect={(result) => submitGuess(result.id, questionNumber)}
-            onSearch={(input) => setSearchText(input)}
-            onClear={() => submitGuess(0, questionNumber)}
-            inputSearchString={searchText}
-            placeholder="Search stations"
-            maxResults={5}
-            showIcon={false}
-            formatResult={formatResult}
-          />
+        <div className="column is-11">
+          <LazyLoadImage src={content.photo} width="100%" effect="blur" />
+
+          <br />
+          <div className="title">
+            #{questionNumber}{" "}
+            <span className="ml-2 has-text-black has-text-weight-normal">
+              {content.caption}
+            </span>
+          </div>
+          <p className="mb-2">Your guess:</p>
+          <div className="station-search-bar">
+            <ReactSearchAutocomplete
+              items={MTA_STATIONS}
+              onSelect={(result) => submitGuess(result.id, questionNumber)}
+              onSearch={(input) => setSearchText(input)}
+              onClear={() => submitGuess(0, questionNumber)}
+              inputSearchString={searchText}
+              placeholder="Search stations"
+              maxResults={5}
+              showIcon={false}
+              formatResult={formatResult}
+            />
+          </div>
         </div>
-        <p></p>
       </div>
-    </div>
+    </>
   );
 };

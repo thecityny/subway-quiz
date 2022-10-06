@@ -39,7 +39,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div className="hero is-fullheight">
+      <div className="hero is-fullheight is-relative">
         <LazyLoadImage
           src={require("./assets/mta-map.jpg")}
           width="100%"

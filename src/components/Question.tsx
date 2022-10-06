@@ -44,11 +44,15 @@ export const Question: React.FC<QuestionProps> = ({
   };
 
   return (
-    <div className="columns question">
+    <div className="columns question is-align-items-center">
       <div className="column is-7 has-text-centered">
         <LazyLoadImage src={content.photo} width="100%" effect="blur" />
       </div>
-      <div className="column is-5">
+      <div className="column is-1">
+        <div className="subway-line" />
+        <div className="subway-station" />
+      </div>
+      <div className="column is-4">
         <div className="title">
           #{questionNumber}{" "}
           <span className="has-text-black has-text-weight-normal">

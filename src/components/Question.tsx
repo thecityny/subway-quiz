@@ -49,13 +49,14 @@ export const Question: React.FC<QuestionProps> = ({
         <LazyLoadImage src={content.photo} width="100%" effect="blur" />
       </div>
       <div className="column is-1">
-        <div className="subway-line" />
-        <div className="subway-station" />
+        <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+          <div className="subway-station" />
+        </div>
       </div>
       <div className="column is-4">
         <div className="title">
           #{questionNumber}{" "}
-          <span className="has-text-black has-text-weight-normal">
+          <span className="ml-2 has-text-black has-text-weight-normal">
             {content.caption}
           </span>
         </div>

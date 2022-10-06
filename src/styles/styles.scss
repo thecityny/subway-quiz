@@ -25,12 +25,6 @@ body {
   }
 }
 
-.question {
-  .column.is-7 {
-    border-right: 15px solid $mta-line-color;
-  }
-}
-
 // TYPOGRAPHY:
 
 h1,
@@ -71,8 +65,31 @@ p {
 // QUESTIONS:
 
 .question {
+  height: 100vh;
+
   .column {
-    padding: 12rem 3rem 0rem 3rem;
+    padding: 3rem;
+
+    &.is-1 {
+      height: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      .subway-line {
+        width: 15px;
+        height: 100%;
+        background-color: $mta-line-color;
+
+        .subway-station {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          background: white;
+          border: 10px solid $mta-black;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 
   .station-search-bar {

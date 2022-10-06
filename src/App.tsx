@@ -3,6 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Question } from "./components/Question";
 import { Results } from "./components/Results";
 import { getQuizContent } from "./data/quiz-content";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 import "./styles/styles.scss";
 
@@ -39,7 +40,7 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div className="hero is-fullheight is-relative">
+      <div className="hero is-fullheight is-relative is-align-items-center">
         <LazyLoadImage
           src={require("./assets/mta-map.jpg")}
           width="100%"
@@ -56,15 +57,24 @@ export const App = () => {
             <p className="byline">By Jose Martinez</p>
           </div>
         </div>
+        <AnchorLink
+          href="#quiz"
+          className="start-button is-flex is-align-items-center is-justify-content-center"
+        >
+          Start
+          <br />↓
+        </AnchorLink>
       </div>
 
-      {blankScorecard.map(({ questionNumber }) => (
-        <Question
-          key={questionNumber}
-          questionNumber={questionNumber}
-          submitGuess={submitGuess}
-        />
-      ))}
+      <div id="quiz">
+        {blankScorecard.map(({ questionNumber }) => (
+          <Question
+            key={questionNumber}
+            questionNumber={questionNumber}
+            submitGuess={submitGuess}
+          />
+        ))}
+      </div>
 
       <div className="hero">
         <div className="hero-body">

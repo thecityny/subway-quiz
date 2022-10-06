@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.0.6",
     "bulma": "^0.9.4",
     "react": "^18.2.0",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^18.2.0",
     "react-lazy-load-image-component": "^1.5.5",
     "react-scripts": "5.0.1",
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-anchor-link-smooth-scroll": "^1.0.2",
     "@types/react-lazy-load-image-component": "^1.5.2"
   }
 }

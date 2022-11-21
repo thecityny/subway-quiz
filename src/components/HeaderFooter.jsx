@@ -2,9 +2,9 @@ import React from "react";
 
 import { ReactComponent as Logo } from "../assets/images/logo.svg";
 import { ReactComponent as LogoSmall } from "../assets/images/logo-small.svg";
-import { ReactComponent as TwitterIcon } from "../assets/images/social-icons/twitter.svg";
-import { ReactComponent as InstagramIcon } from "../assets/images/social-icons/instagram.svg";
-import { ReactComponent as FacebookIcon } from "../assets/images/social-icons/facebook.svg";
+import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter.svg";
+import { ReactComponent as InstagramIcon } from "../assets/social-icons/instagram.svg";
+import { ReactComponent as FacebookIcon } from "../assets/social-icons/facebook.svg";
 
 export const Header = () => (
   <nav className="nav">

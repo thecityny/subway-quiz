@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Question } from "./components/Question";
@@ -5,7 +6,7 @@ import { Results } from "./components/Results";
 import { getQuizContent } from "./data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-import "./styles/styles.scss";
+import "./styles/app.scss";
 
 export type AnswerKey = {
   questionNumber: number;

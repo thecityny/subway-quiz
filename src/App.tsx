@@ -57,8 +57,11 @@ export const App = () => {
         />
         <div className="hero-body">
           <div className="container has-text-centered">
-            <h1 className="title">{process.env.REACT_APP_SITE_NAME}</h1>
-            <p className="subtitle">{process.env.REACT_APP_SEO_DESCRIPTION}</p>
+            <h1 className="title">Name that Subway Station</h1>
+            <p className="subtitle">
+              Do you know NYC’s transit system as well as THE CITY’s transit
+              reporter?
+            </p>
             <br />
             <p className="byline">
               By{" "}

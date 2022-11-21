@@ -86,5 +86,57 @@
     <script>
       var pymChild = new pym.Child({ polling: 100 });
     </script>
+    <!-- 
+    Analytics code. Mostly copypasta, should be checked and ideally made 
+    into a fragment for future use. 1) Google UA 2) GAv4 3) Parse.ly
+  -->
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-18163580-19', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZWKP1Y4D9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DZWKP1Y4D9');
+    dataLayer.push({
+      'Author': 'Sam Rabiyah:Jose Martinez',
+      'Primary_Group': 'Campaign 2022',
+      'Type': 'Interactive'
+    });
+  </script>
+  <script id="parsely-cfg" src="//cdn.parsely.com/keys/thecity.nyc/p.js"></script>
+  <!-- 
+    Event listener to make embedded DataWrapper charts responsive on different screen sizes:
+  -->
+  <script type="text/javascript">
+    window.addEventListener('message', function(event) {
+        if (typeof event.data['datawrapper-height'] !== 'undefined') {
+            var iframes = document.querySelectorAll('iframe');
+            for (var chartId in event.data['datawrapper-height']) {
+                for (var i = 0; i < iframes.length; i++) {
+                    if (iframes[i].contentWindow === event.source) {
+                        var iframe = iframes[i]
+                        iframe.style.height = event.data['datawrapper-height'][chartId] + 'px';
+                    }
+                }
+            }
+        }
+    });
+    </script>
   </body>
 </html>

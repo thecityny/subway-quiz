@@ -23,6 +23,21 @@ body {
   background-color: $mta-background;
 }
 
+// HEADER / FOOTER
+
+nav.nav {
+  position: absolute;
+  background: transparent;
+  z-index: 10;
+  box-shadow: none;
+}
+
+footer .footer {
+  background-color: transparent;
+}
+
+// LAYOUT
+
 .hero.is-fullheight {
   z-index: 1;
   .hero-body .container {

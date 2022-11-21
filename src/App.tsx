@@ -57,11 +57,10 @@ export const App = () => {
         <div className="hero-body">
           <div className="container has-text-centered">
             <h1 className="title">Name that Subway Station</h1>
-            <p className="subtitle">
+            <p className="subtitle mb-6">
               Do you know NYC’s transit system as well as THE CITY’s transit
               reporter?
             </p>
-            <br />
             <p className="byline">
               By{" "}
               {byline.map((author: Author, i: number) => (
@@ -98,10 +97,10 @@ export const App = () => {
 
       <div className="hero is-fullheight" id="scorecard">
         <div className="hero-body">
-          <div className="container has-text-centered">
-            <h1 className="title is-spaced">Scorecard</h1>
+          <div className="container">
+            <h1 className="title is-spaced has-text-centered">Scorecard</h1>
             {questionsLeftToAnswer.length > 0 ? (
-              <>
+              <div className="has-text-centered">
                 <p className="subtitle">
                   Oops! You're not finished with the quiz yet.
                 </p>
@@ -119,7 +118,7 @@ export const App = () => {
                 >
                   Go Back
                 </AnchorLink>
-              </>
+              </div>
             ) : (
               <Results scorecard={scorecard} />
             )}

@@ -102,7 +102,6 @@ export const Question: React.FC<QuestionProps> = ({
         </div>
         <div className="column is-11">
           <LazyLoadImage src={content.photo} width="100%" effect="blur" />
-          <br />
           <div className="title">
             #{questionNumber}{" "}
             <span className="ml-2 has-text-black has-text-weight-normal">

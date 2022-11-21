@@ -13,11 +13,20 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   });
 
   return (
-    <div className="columns is-multiline">
+    <div className="columns is-multiline is-mobile">
       <div className="column is-12">
-        <p className="subtitle">
+        <p className="subtitle has-text-centered">
           You scored a {score} out of {scorecard.length}
         </p>
+      </div>
+      <div className="column is-2">
+        <p className="is-underlined">Question</p>
+      </div>
+      <div className="column is-5">
+        <p className="is-underlined">Your answer</p>
+      </div>
+      <div className="column is-5">
+        <p className="is-underlined">Correct answer</p>
       </div>
       {scorecard.map((answer, i) => {
         const usersStation = getStationFromId(answer.usersGuess);
@@ -25,8 +34,8 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
 
         return (
           <>
-            <div className="column is-half">
-              <p>For #{i + 1}, you answered:</p>
+            <div className="column is-2">#{i + 1}</div>
+            <div className="column is-5">
               {!!usersStation ? (
                 <p>
                   {usersStation.name}{" "}
@@ -36,8 +45,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 <p>Unknown</p>
               )}
             </div>
-            <div className="column is-half">
-              <p>The correct answer was:</p>
+            <div className="column is-5">
               {!!correctStation ? (
                 <p>
                   {correctStation.name}{" "}

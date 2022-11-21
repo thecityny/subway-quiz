@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Question } from "./components/Question";
@@ -5,12 +6,17 @@ import { Results } from "./components/Results";
 import { getQuizContent } from "./data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-import "./styles/styles.scss";
+import "./styles/app.scss";
 
 export type AnswerKey = {
   questionNumber: number;
   usersGuess: number;
   correctAnswer: number;
+};
+
+type Author = {
+  name: string;
+  url: string;
 };
 
 export const App = () => {
@@ -34,6 +40,8 @@ export const App = () => {
     );
   };
 
+  const byline = JSON.parse(process.env.REACT_APP_AUTHOR as string) as Author[];
+
   const questionsLeftToAnswer = scorecard
     .filter((answerKey) => answerKey.usersGuess === 0)
     .map((answerKey) => answerKey.questionNumber);
@@ -49,12 +57,22 @@ export const App = () => {
         />
         <div className="hero-body">
           <div className="container has-text-centered">
-            <h1 className="title">Name That Subway Station</h1>
-            <p className="subtitle">
-              A quiz to test your knowledge of NYC transit
-            </p>
+            <h1 className="title">{process.env.REACT_APP_SITE_NAME}</h1>
+            <p className="subtitle">{process.env.REACT_APP_SEO_DESCRIPTION}</p>
             <br />
-            <p className="byline">By Jose Martinez</p>
+            <p className="byline">
+              By{" "}
+              {byline.map((author: Author, i: number) => (
+                <span key={i} className="author">
+                  <a href={author.url}>{author.name}</a>
+                  {i < byline.length - 2
+                    ? ", "
+                    : i < byline.length - 1
+                    ? " and "
+                    : ""}
+                </span>
+              ))}
+            </p>
           </div>
         </div>
         <AnchorLink

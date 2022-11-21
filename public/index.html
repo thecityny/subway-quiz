@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" />
   <head>
-    <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <title>%REACT_APP_SITE_NAME%</title>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="%REACT_APP_SEO_DESCRIPTION%" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href="%REACT_APP_DOMAIN%%REACT_APP_SLUG%" />
+    <meta property="og:title" content="%REACT_APP_SOCIAL_HEADLINE%" />
+    <meta property="og:description" content="%REACT_APP_SOCIAL_DESCRIPTION%" />
+    <meta property="og:url" content="%REACT_APP_DOMAIN%%REACT_APP_SLUG%" />
+    <meta property="og:image" content="%REACT_APP_DOMAIN%%REACT_APP_SLUG%/social-image.jpg" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="%REACT_APP_SITE_NAME%" />
+    <meta property="og:locale" content="en-US" />
+
+    <meta property="twitter:title" content="%REACT_APP_SOCIAL_HEADLINE%" />
+    <meta property="twitter:description" content="%REACT_APP_SOCIAL_DESCRIPTION%" />
+    <meta property="twitter:url" content="%REACT_APP_DOMAIN%%REACT_APP_SLUG%" />
+    <meta property="twitter:image" content="%REACT_APP_DOMAIN%%REACT_APP_SLUG%/social-image.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+          {
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          "headline": "%REACT_APP_SEO_HEADLINE%",
+          "image": {
+              "@type": "ImageObject",
+              "contentUrl": "%REACT_APP_DOMAIN%%REACT_APP_SLUG%/social-image.jpg",
+              "url": "%REACT_APP_DOMAIN%%REACT_APP_SLUG%/social-image.jpg",
+              "representativeOfPage": true
+          },
+          "dateCreated":  "%REACT_APP_PUB_DATE%",
+          "datePublished":  "%REACT_APP_PUB_DATE%",
+          "dateModified":  "%REACT_APP_UPDATE_DATE%",
+          "mainEntityOfPage":  "%REACT_APP_DOMAIN%%REACT_APP_SLUG%",
+          "description":  "%REACT_APP_SEO_DESCRIPTION%",
+          "publisher": {
+              "@type": "Organization",
+              "name":  "%REACT_APP_SITE_NAME%",
+              "url": "https://www.thecity.nyc/"
+          },
+          "author": %REACT_APP_AUTHOR%
+      }
+    </script>
+    
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,7 +61,6 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -39,5 +75,16 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- 
+      This is our script tag for enabling the responsive embed of this app 
+      within an iframe using Pym.js. See: https://blog.apps.npr.org/pym.js/.
+    -->
+    <script
+      type="text/javascript"
+      src="https://pym.nprapps.org/pym.v1.min.js"
+    ></script>
+    <script>
+      var pymChild = new pym.Child({ polling: 100 });
+    </script>
   </body>
 </html>

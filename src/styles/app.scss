@@ -1,8 +1,23 @@
-@import "_fonts.scss";
-@import "_vars.scss";
+// RESET
+// Smooths out the rough edges across browsers
+@import "./defaults/normalize";
+
+// VARIABLES
+// Reusable settings
+@import "./_colors";
+@import "./_fonts";
+
+// OTHER DEFAULT STYLES
+// Smooths out the rough edges across browsers
+@import "./defaults/article";
+@import "./defaults/dataviz";
+
+// BULMA
+// External CSS framework
 @import "../../node_modules/bulma/bulma.sass";
 
-// GENERAL:
+// YOUR CODE
+// Starting writing your stuff below here
 
 body {
   background-color: $mta-background;

@@ -1,0 +1,94 @@
+name: Deploy to production
+
+concurrency:
+  group: deploy-prod-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - id: checkout
+        name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Load .env file
+        uses: xom9ikk/dotenv@v2
+
+      - id: install-node
+        name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - id: install-npm
+        name: Use npm v7
+        run: npm install --global npm@7
+
+      - id: cache-node-modules
+        name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - id: install-project-modules
+        name: Install project dependencies
+        run: npm ci --production ## For the app's build routine
+
+      - id: install-action-modules
+        name: Install action dependencies
+        run: npm install archieml ## For the deployment routine
+
+      - id: get-slug
+        name: Get slug
+        uses: actions/github-script@v4
+        with:
+          result-encoding: string
+
+          script: |
+            // Pull the slug
+            const slug = `${{ env.REACT_APP_SLUG }}`;
+            console.log(`slug -> ${slug}`);
+
+            // If we get this far, we're good to go.
+            return slug.trim();
+
+      - id: npm-build
+        name: Build project distribution
+        run: npm run build
+        env:
+          PATH_PREFIX: ${{ steps.get-slug.outputs.result }}
+
+      - id: configure-aws
+        name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_S3_PRODUCTION_REGION }}
+
+      - name: Invalidate CloudFront (clear cache)
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }}
+          PATHS: ${{ format('/{0}/*', steps.get-slug.outputs.result) }}
+      - id: npm-deploy
+        name: Upload the prepared files
+        uses: datadesk/delivery-deploy-action@master
+        with:
+          bucket: ${{ secrets.AWS_S3_PRODUCTION_BUCKET }}
+          base-path: ${{ steps.get-slug.outputs.result }}
+          dir: build
+          should-cache: true
+          use-accelerate-endpoint: false
+          public: true

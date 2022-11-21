@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Question } from "./components/Question";
 import { Results } from "./components/Results";
@@ -100,7 +99,7 @@ export const App = () => {
       <div className="hero">
         <div className="hero-body">
           <div className="container has-text-centered">
-            <h1 className="title is-spaced">Results</h1>
+            <h1 className="title is-spaced">Scorecard</h1>
             {questionsLeftToAnswer.length > 0 ? (
               <p className="subtitle">
                 Oops! You're not finished with the quiz yet.

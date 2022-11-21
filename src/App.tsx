@@ -96,21 +96,30 @@ export const App = () => {
         ))}
       </div>
 
-      <div className="hero">
+      <div className="hero is-fullheight" id="scorecard">
         <div className="hero-body">
           <div className="container has-text-centered">
             <h1 className="title is-spaced">Scorecard</h1>
             {questionsLeftToAnswer.length > 0 ? (
-              <p className="subtitle">
-                Oops! You're not finished with the quiz yet.
-                <br />
-                Please go back and answer{" "}
-                {questionsLeftToAnswer.length > 1
-                  ? `questions ${questionsLeftToAnswer
-                      .slice(0, -1)
-                      .join(", ")}, and ${questionsLeftToAnswer.slice(-1)}`
-                  : `question ${questionsLeftToAnswer}`}
-              </p>
+              <>
+                <p className="subtitle">
+                  Oops! You're not finished with the quiz yet.
+                </p>
+                <p className="subtitle">
+                  Please go back and answer{" "}
+                  {questionsLeftToAnswer.length > 1
+                    ? `questions ${questionsLeftToAnswer
+                        .slice(0, -1)
+                        .join(", ")}, and ${questionsLeftToAnswer.slice(-1)}`
+                    : `question ${questionsLeftToAnswer}`}
+                </p>
+                <AnchorLink
+                  href={`#q${questionsLeftToAnswer[0]}`}
+                  className="button is-dark mt-4"
+                >
+                  Go Back
+                </AnchorLink>
+              </>
             ) : (
               <Results scorecard={scorecard} />
             )}

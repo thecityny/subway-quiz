@@ -10,6 +10,7 @@ import {
   Train,
 } from "../data/stations";
 import { getQuizContent } from "../data/quiz-content";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 type QuestionProps = {
   questionNumber: number;
@@ -44,7 +45,7 @@ export const Question: React.FC<QuestionProps> = ({
   };
 
   return (
-    <>
+    <div id={`q${questionNumber}`}>
       <div className="columns question is-align-items-center is-hidden-mobile">
         {/* DESKTOP AND TABLET COLUMNS: */}
         <div className="column is-7 has-text-centered">
@@ -76,6 +77,20 @@ export const Question: React.FC<QuestionProps> = ({
               formatResult={formatResult}
             />
           </div>
+          {!!searchText && (
+            <AnchorLink
+              href={
+                questionNumber > getQuizContent().length - 1
+                  ? "#scorecard"
+                  : `#q${questionNumber + 1}`
+              }
+              className="button is-dark mt-4"
+            >
+              {questionNumber > getQuizContent().length - 1
+                ? "See Results"
+                : "Next ↓"}
+            </AnchorLink>
+          )}
         </div>
       </div>
       {/* MOBILE COLUMNS: */}
@@ -110,6 +125,6 @@ export const Question: React.FC<QuestionProps> = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

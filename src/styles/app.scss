@@ -126,6 +126,7 @@ footer .footer {
 
   .question {
     height: 100vh;
+    width: 100%;
 
     .column {
       padding: 3rem;
@@ -159,8 +160,8 @@ footer .footer {
     }
 
     &.is-mobile .column {
-      padding: 1.5rem;
       &.is-1 {
+        padding: 0 1.5rem;
         .subway-line {
           width: 8px;
           height: 100%;
@@ -175,6 +176,9 @@ footer .footer {
             border-radius: 50%;
           }
         }
+      }
+      &.is-11 {
+        padding: 3rem 1rem;
       }
     }
 

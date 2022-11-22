@@ -101,10 +101,10 @@ export const Question: React.FC<QuestionProps> = ({
         </div>
         <div className="column is-11">
           <LazyLoadImage src={content.photo} width="100%" effect="blur" />
-          <div>
-            #{questionNumber}{" "}
-            <h2 className="ml-2 has-text-black">{content.caption}</h2>
-          </div>
+          <h1 className="mb-0">#{questionNumber}</h1>
+          <h2 className="has-text-black has-text-weight-bold mb-4">
+            {content.caption}
+          </h2>
           <p className="mb-2">Your guess:</p>
           <div className="station-search-bar">
             <ReactSearchAutocomplete

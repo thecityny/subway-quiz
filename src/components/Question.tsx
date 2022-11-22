@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import classnames from "classnames";
+
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 import {
@@ -76,20 +78,23 @@ export const Question: React.FC<QuestionProps> = ({
               formatResult={formatResult}
             />
           </div>
-          {!!searchText && (
-            <AnchorLink
-              href={
-                questionNumber > getQuizContent().length - 1
-                  ? "#scorecard"
-                  : `#q${questionNumber + 1}`
-              }
-              className="button is-dark mt-4"
-            >
-              {questionNumber > getQuizContent().length - 1
-                ? "See Results"
-                : "Next ↓"}
-            </AnchorLink>
-          )}
+          <AnchorLink
+            href={
+              questionNumber > getQuizContent().length - 1
+                ? "#scorecard"
+                : `#q${questionNumber + 1}`
+            }
+            className={classnames(
+              "button",
+              "is-dark",
+              "mt-4",
+              !searchText && "is-invisible"
+            )}
+          >
+            {questionNumber > getQuizContent().length - 1
+              ? "See Results"
+              : "Next ↓"}
+          </AnchorLink>
         </div>
       </div>
       {/* MOBILE COLUMNS: */}
@@ -119,6 +124,23 @@ export const Question: React.FC<QuestionProps> = ({
               formatResult={formatResult}
             />
           </div>
+          <AnchorLink
+            href={
+              questionNumber > getQuizContent().length - 1
+                ? "#scorecard"
+                : `#q${questionNumber + 1}`
+            }
+            className={classnames(
+              "button",
+              "is-dark",
+              "mt-4",
+              !searchText && "is-invisible"
+            )}
+          >
+            {questionNumber > getQuizContent().length - 1
+              ? "See Results"
+              : "Next ↓"}
+          </AnchorLink>
         </div>
       </div>
     </div>

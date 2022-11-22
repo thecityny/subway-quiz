@@ -1,6 +1,7 @@
 import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
 import { ColoredLineIcons } from "./Question";
+import classnames from "classnames";
 
 // @ts-ignorets-ignore
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-white.svg";
@@ -43,11 +44,26 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
         {scorecard.map((answer, i) => {
           const usersStation = getStationFromId(answer.usersGuess);
           const correctStation = getStationFromId(answer.correctAnswer);
+          const gotAnswerCorrect = usersStation === correctStation;
 
           return (
             <>
-              <div className="column is-2">#{i + 1}</div>
-              <div className="column is-5">
+              <div
+                className={classnames(
+                  "column",
+                  "is-2",
+                  gotAnswerCorrect && "has-text-weight-bold"
+                )}
+              >
+                #{i + 1}
+              </div>
+              <div
+                className={classnames(
+                  "column",
+                  "is-5",
+                  gotAnswerCorrect && "has-text-weight-bold"
+                )}
+              >
                 {!!usersStation ? (
                   <p>
                     {usersStation.name}{" "}
@@ -57,7 +73,13 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                   <p>Unknown</p>
                 )}
               </div>
-              <div className="column is-5">
+              <div
+                className={classnames(
+                  "column",
+                  "is-5",
+                  gotAnswerCorrect && "has-text-weight-bold"
+                )}
+              >
                 {!!correctStation ? (
                   <p>
                     {correctStation.name}{" "}

@@ -141,25 +141,34 @@ footer .footer {
         }
       }
 
+      .subway-line {
+        width: 15px;
+        height: 100%;
+        background-color: $mta-line-color;
+
+        .subway-station {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          background: white;
+          border: 10px solid $mta-black;
+          border-radius: 50%;
+        }
+
+        &.is-last-question {
+          height: 52%;
+
+          .subway-station {
+            bottom: 0;
+            margin-bottom: -3px;
+          }
+        }
+      }
+
       &.is-1 {
         height: 100%;
         padding-top: 0;
         padding-bottom: 0;
-
-        .subway-line {
-          width: 15px;
-          height: 100%;
-          background-color: $mta-line-color;
-
-          .subway-station {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: white;
-            border: 10px solid $mta-black;
-            border-radius: 50%;
-          }
-        }
       }
     }
 
@@ -168,16 +177,11 @@ footer .footer {
         padding: 0 1.5rem;
         .subway-line {
           width: 8px;
-          height: 100%;
-          background-color: $mta-line-color;
 
           .subway-station {
-            position: absolute;
             width: 25px;
             height: 25px;
-            background: white;
             border: 3px solid $mta-black;
-            border-radius: 50%;
           }
         }
       }

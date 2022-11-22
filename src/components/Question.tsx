@@ -54,7 +54,16 @@ export const Question: React.FC<QuestionProps> = ({
           <LazyLoadImage src={content.photo} width="100%" effect="blur" />
         </div>
         <div className="column is-1">
-          <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+          <div
+            className={classnames(
+              "subway-line",
+              "is-relative",
+              "is-flex",
+              "is-align-items-center",
+              "is-justify-content-center",
+              questionNumber > getQuizContent().length - 1 && "is-last-question"
+            )}
+          >
             <div className="subway-station" />
           </div>
         </div>
@@ -100,7 +109,16 @@ export const Question: React.FC<QuestionProps> = ({
       {/* MOBILE COLUMNS: */}
       <div className="columns question is-mobile is-hidden-tablet is-1">
         <div className="column is-1">
-          <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+          <div
+            className={classnames(
+              "subway-line",
+              "is-relative",
+              "is-flex",
+              "is-align-items-center",
+              "is-justify-content-center",
+              questionNumber > getQuizContent().length - 1 && "is-last-question"
+            )}
+          >
             <div className="subway-station" />
           </div>
         </div>

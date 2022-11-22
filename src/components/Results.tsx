@@ -52,7 +52,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 className={classnames(
                   "column",
                   "is-2",
-                  gotAnswerCorrect && "has-text-weight-bold"
+                  gotAnswerCorrect
+                    ? "has-text-weight-bold"
+                    : "has-text-weight-light"
                 )}
               >
                 #{i + 1}
@@ -61,7 +63,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 className={classnames(
                   "column",
                   "is-5",
-                  gotAnswerCorrect && "has-text-weight-bold"
+                  gotAnswerCorrect
+                    ? "has-text-weight-bold"
+                    : "has-text-weight-light"
                 )}
               >
                 {!!usersStation ? (
@@ -77,7 +81,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 className={classnames(
                   "column",
                   "is-5",
-                  gotAnswerCorrect && "has-text-weight-bold"
+                  gotAnswerCorrect
+                    ? "has-text-weight-bold"
+                    : "has-text-weight-light"
                 )}
               >
                 {!!correctStation ? (

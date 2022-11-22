@@ -135,6 +135,10 @@ footer .footer {
         max-height: 80vh;
         object-fit: cover;
         outline: none;
+
+        @media screen and (max-width: 768px) {
+          max-height: 50vh;
+        }
       }
 
       &.is-1 {

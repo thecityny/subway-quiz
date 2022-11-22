@@ -49,7 +49,7 @@ export const App = () => {
   return (
     <article>
       <Header />
-      <div className="App">
+      <div className="app">
         <div className="hero is-fullheight is-relative is-align-items-center">
           <LazyLoadImage
             src={require("./assets/mta-map.jpg")}
@@ -58,13 +58,13 @@ export const App = () => {
             effect="blur"
           />
           <div className="hero-body">
-            <div className="container has-text-centered">
+            <div className="copy-container has-text-centered">
               <h1 className="title">Name that Subway Station</h1>
               <p className="subtitle mb-6">
                 Do you know NYC’s transit system as well as THE CITY’s transit
                 reporter?
               </p>
-              <p className="byline">
+              <span className="byline">
                 By{" "}
                 {byline.map((author: Author, i: number) => (
                   <span key={i} className="author">
@@ -76,7 +76,7 @@ export const App = () => {
                       : ""}
                   </span>
                 ))}
-              </p>
+              </span>
             </div>
           </div>
           <AnchorLink
@@ -100,20 +100,28 @@ export const App = () => {
 
         <div className="hero is-fullheight" id="scorecard">
           <div className="hero-body">
-            <div className="container">
+            <div className="container scorecard-container">
               <h1 className="title is-spaced has-text-centered">Scorecard</h1>
               {questionsLeftToAnswer.length > 0 ? (
                 <div className="has-text-centered">
-                  <p className="subtitle">
-                    Oops! You're not finished with the quiz yet.
+                  <p className="subtitle mb-2">
+                    Oops! You're not finished with the quiz yet...
                   </p>
                   <p className="subtitle">
                     Please go back and answer{" "}
-                    {questionsLeftToAnswer.length > 1
-                      ? `questions ${questionsLeftToAnswer
-                          .slice(0, -1)
-                          .join(", ")}, and ${questionsLeftToAnswer.slice(-1)}`
-                      : `question ${questionsLeftToAnswer}`}
+                    {questionsLeftToAnswer.length > 1 ? (
+                      <>
+                        questions{" "}
+                        <b>
+                          {questionsLeftToAnswer.slice(0, -1).join(", ")}, and{" "}
+                          {questionsLeftToAnswer.slice(-1)}
+                        </b>
+                      </>
+                    ) : (
+                      <>
+                        question <b>{questionsLeftToAnswer}</b>
+                      </>
+                    )}
                   </p>
                   <AnchorLink
                     href={`#q${questionsLeftToAnswer[0]}`}

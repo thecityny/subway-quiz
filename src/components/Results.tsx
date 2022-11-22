@@ -1,6 +1,7 @@
 import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
 import { ColoredLineIcons } from "./Question";
+import classnames from "classnames";
 
 // @ts-ignorets-ignore
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-white.svg";
@@ -19,7 +20,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
     }
   });
 
-  const linkToTweet = `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station ${score}/11 ${resultsInEmojis}`;
+  const linkToTweet = encodeURI(
+    `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis}`
+  );
 
   return (
     <div>
@@ -30,22 +33,41 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           </p>
         </div>
         <div className="column is-2">
-          <p className="is-underlined">Question</p>
+          <p className="is-underlined is-hidden-mobile">Question</p>
         </div>
         <div className="column is-5">
           <p className="is-underlined">Your answer</p>
         </div>
-        <div className="column is-5">
+        <div className="column is-5 pr-0">
           <p className="is-underlined">Correct answer</p>
         </div>
         {scorecard.map((answer, i) => {
           const usersStation = getStationFromId(answer.usersGuess);
           const correctStation = getStationFromId(answer.correctAnswer);
+          const gotAnswerCorrect = usersStation === correctStation;
 
           return (
             <>
-              <div className="column is-2">#{i + 1}</div>
-              <div className="column is-5">
+              <div
+                className={classnames(
+                  "column",
+                  "is-2",
+                  gotAnswerCorrect
+                    ? "has-text-weight-bold"
+                    : "has-text-weight-light"
+                )}
+              >
+                #{i + 1}
+              </div>
+              <div
+                className={classnames(
+                  "column",
+                  "is-5",
+                  gotAnswerCorrect
+                    ? "has-text-weight-bold"
+                    : "has-text-weight-light"
+                )}
+              >
                 {!!usersStation ? (
                   <p>
                     {usersStation.name}{" "}
@@ -55,7 +77,15 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                   <p>Unknown</p>
                 )}
               </div>
-              <div className="column is-5">
+              <div
+                className={classnames(
+                  "column",
+                  "is-5",
+                  gotAnswerCorrect
+                    ? "has-text-weight-bold"
+                    : "has-text-weight-light"
+                )}
+              >
                 {!!correctStation ? (
                   <p>
                     {correctStation.name}{" "}
@@ -69,12 +99,12 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           );
         })}
       </div>
-      <p className="subtitle has-text-centered mt-6">
+      <p className="has-text-centered mt-6">
         <a
           href={linkToTweet}
           target="_blank"
           rel="noopener noreferrer"
-          className="button is-large is-twitter"
+          className="button is-twitter"
         >
           Share my score
           <span className="icon ml-3 p-1">

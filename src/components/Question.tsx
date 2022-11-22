@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import classnames from "classnames";
+
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 import {
@@ -52,17 +54,25 @@ export const Question: React.FC<QuestionProps> = ({
           <LazyLoadImage src={content.photo} width="100%" effect="blur" />
         </div>
         <div className="column is-1">
-          <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+          <div
+            className={classnames(
+              "subway-line",
+              "is-relative",
+              "is-flex",
+              "is-align-items-center",
+              "is-justify-content-center",
+              questionNumber > getQuizContent().length - 1 && "is-last-question"
+            )}
+          >
             <div className="subway-station" />
           </div>
         </div>
         <div className="column is-4">
-          <div className="title">
-            #{questionNumber}{" "}
-            <span className="ml-2 has-text-black has-text-weight-normal">
-              {content.caption}
-            </span>
-          </div>
+          <h1 className="mt-6 mb-0">#{questionNumber}</h1>
+          <h2 className="has-text-black has-text-weight-bold mb-4">
+            {content.caption}
+          </h2>
+
           <p className="mb-2">Your guess:</p>
           <div className="station-search-bar">
             <ReactSearchAutocomplete
@@ -77,37 +87,47 @@ export const Question: React.FC<QuestionProps> = ({
               formatResult={formatResult}
             />
           </div>
-          {!!searchText && (
-            <AnchorLink
-              href={
-                questionNumber > getQuizContent().length - 1
-                  ? "#scorecard"
-                  : `#q${questionNumber + 1}`
-              }
-              className="button is-dark mt-4"
-            >
-              {questionNumber > getQuizContent().length - 1
-                ? "See Results"
-                : "Next ↓"}
-            </AnchorLink>
-          )}
+          <AnchorLink
+            href={
+              questionNumber > getQuizContent().length - 1
+                ? "#scorecard"
+                : `#q${questionNumber + 1}`
+            }
+            className={classnames(
+              "button",
+              "is-dark",
+              "mt-4",
+              !searchText && "is-invisible"
+            )}
+          >
+            {questionNumber > getQuizContent().length - 1
+              ? "See Results"
+              : "Next ↓"}
+          </AnchorLink>
         </div>
       </div>
       {/* MOBILE COLUMNS: */}
-      <div className="columns question is-mobile is-hidden-tablet">
+      <div className="columns question is-mobile is-hidden-tablet is-1">
         <div className="column is-1">
-          <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
+          <div
+            className={classnames(
+              "subway-line",
+              "is-relative",
+              "is-flex",
+              "is-align-items-center",
+              "is-justify-content-center",
+              questionNumber > getQuizContent().length - 1 && "is-last-question"
+            )}
+          >
             <div className="subway-station" />
           </div>
         </div>
         <div className="column is-11">
           <LazyLoadImage src={content.photo} width="100%" effect="blur" />
-          <div className="title">
-            #{questionNumber}{" "}
-            <span className="ml-2 has-text-black has-text-weight-normal">
-              {content.caption}
-            </span>
-          </div>
+          <h1 className="mt-4 mb-0">#{questionNumber}</h1>
+          <h2 className="has-text-black has-text-weight-bold mb-4">
+            {content.caption}
+          </h2>
           <p className="mb-2">Your guess:</p>
           <div className="station-search-bar">
             <ReactSearchAutocomplete
@@ -122,6 +142,23 @@ export const Question: React.FC<QuestionProps> = ({
               formatResult={formatResult}
             />
           </div>
+          <AnchorLink
+            href={
+              questionNumber > getQuizContent().length - 1
+                ? "#scorecard"
+                : `#q${questionNumber + 1}`
+            }
+            className={classnames(
+              "button",
+              "is-dark",
+              "mt-4",
+              !searchText && "is-invisible"
+            )}
+          >
+            {questionNumber > getQuizContent().length - 1
+              ? "See Results"
+              : "Next ↓"}
+          </AnchorLink>
         </div>
       </div>
     </div>

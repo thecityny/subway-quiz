@@ -57,12 +57,11 @@ export const Question: React.FC<QuestionProps> = ({
           </div>
         </div>
         <div className="column is-4">
-          <div className="title">
-            #{questionNumber}{" "}
-            <span className="ml-2 has-text-black has-text-weight-normal">
-              {content.caption}
-            </span>
-          </div>
+          <h1 className="mb-0">#{questionNumber}</h1>
+          <h2 className="has-text-black has-text-weight-bold mb-4">
+            {content.caption}
+          </h2>
+
           <p className="mb-2">Your guess:</p>
           <div className="station-search-bar">
             <ReactSearchAutocomplete
@@ -102,11 +101,9 @@ export const Question: React.FC<QuestionProps> = ({
         </div>
         <div className="column is-11">
           <LazyLoadImage src={content.photo} width="100%" effect="blur" />
-          <div className="title">
+          <div>
             #{questionNumber}{" "}
-            <span className="ml-2 has-text-black has-text-weight-normal">
-              {content.caption}
-            </span>
+            <h2 className="ml-2 has-text-black">{content.caption}</h2>
           </div>
           <p className="mb-2">Your guess:</p>
           <div className="station-search-bar">

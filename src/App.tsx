@@ -100,7 +100,7 @@ export const App = () => {
 
         <div className="hero is-fullheight" id="scorecard">
           <div className="hero-body">
-            <div className="container">
+            <div className="container scorecard-container">
               <h1 className="title is-spaced has-text-centered">Scorecard</h1>
               {questionsLeftToAnswer.length > 0 ? (
                 <div className="has-text-centered">

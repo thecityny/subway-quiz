@@ -178,7 +178,7 @@ footer .footer {
         }
       }
       &.is-11 {
-        padding: 3rem 1rem;
+        padding: 5rem 1.5rem;
       }
     }
 
@@ -215,9 +215,14 @@ footer .footer {
 
   // RESULTS:
 
-  .button.is-twitter {
-    background-color: $twitter-blue;
-    color: white;
+  .scorecard-container {
+    max-width: 800px;
+    padding: 0;
+
+    .button.is-twitter {
+      background-color: $twitter-blue;
+      color: white;
+    }
   }
 
   // SUBWAY COLORS:

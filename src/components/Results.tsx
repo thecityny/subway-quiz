@@ -32,12 +32,12 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           </p>
         </div>
         <div className="column is-2">
-          <p className="is-underlined">Question</p>
+          <p className="is-underlined is-hidden-mobile">Question</p>
         </div>
         <div className="column is-5">
           <p className="is-underlined">Your answer</p>
         </div>
-        <div className="column is-5">
+        <div className="column is-5 pr-0">
           <p className="is-underlined">Correct answer</p>
         </div>
         {scorecard.map((answer, i) => {
@@ -71,12 +71,12 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           );
         })}
       </div>
-      <p className="subtitle has-text-centered mt-6">
+      <p className="has-text-centered mt-6">
         <a
           href={linkToTweet}
           target="_blank"
           rel="noopener noreferrer"
-          className="button is-large is-twitter"
+          className="button is-twitter"
         >
           Share my score
           <span className="icon ml-3 p-1">

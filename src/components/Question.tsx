@@ -93,7 +93,7 @@ export const Question: React.FC<QuestionProps> = ({
         </div>
       </div>
       {/* MOBILE COLUMNS: */}
-      <div className="columns question is-mobile is-hidden-tablet">
+      <div className="columns question is-mobile is-hidden-tablet is-1">
         <div className="column is-1">
           <div className="subway-line is-relative is-flex is-align-items-center is-justify-content-center">
             <div className="subway-station" />

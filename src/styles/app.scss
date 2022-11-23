@@ -65,6 +65,11 @@ footer .footer {
 .app {
   .hero.is-fullheight {
     z-index: 1;
+    &:first-child {
+      @media screen and (max-width: 768px) {
+        margin-bottom: 4rem;
+      }
+    }
     svg {
       position: absolute;
       top: 20%;

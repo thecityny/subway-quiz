@@ -229,8 +229,14 @@ footer .footer {
   // RESULTS:
 
   .scorecard-container {
-    max-width: 800px;
-    padding: 0;
+    max-width: 850px;
+    background-color: $mta-background-light;
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px;
+
+    @media screen and (max-width: 768px) {
+      padding: 2rem 1.5rem;
+    }
 
     .button.is-twitter {
       background-color: $twitter-blue;

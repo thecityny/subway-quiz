@@ -141,6 +141,8 @@ footer .footer {
         outline: none;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
+        animation: jiggle 0.6s 1;
+
         @media screen and (max-width: 768px) {
           max-height: 50vh;
         }
@@ -223,6 +225,27 @@ footer .footer {
           white-space: normal;
         }
       }
+    }
+  }
+
+  @keyframes jiggle {
+    0% {
+      transform: rotate(-3deg);
+    }
+    16% {
+      transform: rotate(3deg);
+    }
+    33% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+    66% {
+      transform: rotate(-1deg);
+    }
+    84% {
+      transform: rotate(1deg);
     }
   }
 

@@ -51,12 +51,7 @@ export const Question: React.FC<QuestionProps> = ({
       <div className="columns question is-align-items-center is-hidden-mobile">
         {/* DESKTOP AND TABLET COLUMNS: */}
         <div className="column is-7 has-text-centered">
-          <LazyLoadImage
-            src={content.photo}
-            width="100%"
-            effect="blur"
-            visibleByDefault
-          />
+          <LazyLoadImage src={content.photo} width="100%" effect="blur" />
         </div>
         <div className="column is-1">
           <div

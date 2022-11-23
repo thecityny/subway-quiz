@@ -49,6 +49,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           return (
             <>
               <div
+                key={`1-${i}`}
                 className={classnames(
                   "column",
                   "is-2",
@@ -60,6 +61,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 #{i + 1}
               </div>
               <div
+                key={`2-${i}`}
                 className={classnames(
                   "column",
                   "is-5",
@@ -78,6 +80,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 )}
               </div>
               <div
+                key={`3-${i}`}
                 className={classnames(
                   "column",
                   "is-5",

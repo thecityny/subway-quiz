@@ -36,25 +36,52 @@ footer .footer {
   background-color: transparent;
 }
 
+// SUBWAY ANIMATION
+.st0,
+.st2,
+.st4 {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: dash 2s linear forwards;
+  animation-iteration-count: 1;
+}
+
+.st1,
+.st3 {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  animation: dash 3s linear forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 // LAYOUT
 
 .app {
   .hero.is-fullheight {
     z-index: 1;
+    svg {
+      position: absolute;
+      top: 20%;
+    }
     .hero-body .copy-container {
-      background-color: $mta-background-transparent;
+      margin-top: 30%;
       padding: 2rem;
       z-index: 10;
     }
-    .lazy-load-image-background {
-      position: absolute;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        outline: none;
-        filter: blur(2px);
+    @media screen and (max-width: 768px) {
+      svg {
+        top: 44%;
+        width: 100vh;
+        transform: rotate(90deg);
+      }
+      .hero-body .copy-container {
+        background-color: $mta-background-transparent;
       }
     }
 
@@ -160,6 +187,16 @@ footer .footer {
           background: white;
           border: 10px solid $mta-black;
           border-radius: 50%;
+        }
+
+        &.is-first-question {
+          background: linear-gradient(
+            180deg,
+            rgba(251, 242, 227, 1) 0%,
+            rgba(251, 242, 227, 1) 50%,
+            rgba(7, 174, 209, 1) 50%,
+            rgba(7, 174, 209, 1) 100%
+          );
         }
 
         &.is-last-question {

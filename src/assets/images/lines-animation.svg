@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" x="0px" y="0px" width="100%" viewBox="0 0 1200 139" style="enable-background:new 0 0 1200 139;" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+	.st0{fill:none;stroke:#ee352e;stroke-width:6;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#00933c;stroke-width:6;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#ff6319;stroke-width:6;stroke-miterlimit:10;}
+	.st3{fill:none;stroke:#6cbe45;stroke-width:6;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#b933ad;stroke-width:6;stroke-miterlimit:10;}
+</style>
+  <polyline class="st0" points="0 60.5 301 60.5 345.7 35 479 35 501 19.7 817 19.7 867 60.3 1200 60.3"/>
+  <polyline class="st1" points="0 67.5 359 67.5 391.5 45 520 43 564 5 1038 5 1127 48 1200 48"/>
+  <polyline class="st2" points="0,74.5 301,74.5 393,74.5 425,52 754,52 792,75 1029,75 1076,109 1200,109 "/>
+  <polyline class="st3" points="0 81.5 301 81.5 356 81.5 388 107 592 107 621 134 897 134 910 118 1200 118"/>
+  <polyline class="st4" points="0 88.5 301 88.5 437 88.5 475 63 710 63 750 103 1045 103 1071 83 1200 83"/>
+  <ellipse style="fill: rgb(255, 255, 255); stroke: rgb(17, 17, 17); stroke-width: 6px;" cx="46.667" cy="73.682" rx="21.259" ry="21.259"/>
+</svg>

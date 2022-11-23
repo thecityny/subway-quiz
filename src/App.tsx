@@ -4,9 +4,12 @@ import { Question } from "./components/Question";
 import { Results } from "./components/Results";
 import { getQuizContent } from "./data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Footer, Header } from "components/HeaderFooter";
+
+// @ts-ignorets-ignore
+import { ReactComponent as Animation } from "./assets/images/lines-animation.svg";
 
 import "./styles/app.scss";
-import { Footer, Header } from "components/HeaderFooter";
 
 export type AnswerKey = {
   questionNumber: number;
@@ -51,12 +54,7 @@ export const App = () => {
       <Header />
       <div className="app">
         <div className="hero is-fullheight is-relative is-align-items-center">
-          <LazyLoadImage
-            src={require("./assets/mta-map.jpg")}
-            width="100%"
-            height="100%"
-            effect="blur"
-          />
+          <Animation />
           <div className="hero-body">
             <div className="copy-container has-text-centered">
               <h1 className="title">Name that Subway Station</h1>

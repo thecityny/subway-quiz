@@ -61,7 +61,10 @@ export const Question: React.FC<QuestionProps> = ({
               "is-flex",
               "is-align-items-center",
               "is-justify-content-center",
-              questionNumber > getQuizContent().length - 1 && "is-last-question"
+              questionNumber === 1
+                ? "is-first-question"
+                : questionNumber > getQuizContent().length - 1 &&
+                    "is-last-question"
             )}
           >
             <div className="subway-station" />
@@ -116,7 +119,10 @@ export const Question: React.FC<QuestionProps> = ({
               "is-flex",
               "is-align-items-center",
               "is-justify-content-center",
-              questionNumber > getQuizContent().length - 1 && "is-last-question"
+              questionNumber === 1
+                ? "is-first-question"
+                : questionNumber > getQuizContent().length - 1 &&
+                    "is-last-question"
             )}
           >
             <div className="subway-station" />

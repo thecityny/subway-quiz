@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Question } from "./components/Question";
 import { Results } from "./components/Results";
 import { getQuizContent } from "./data/quiz-content";

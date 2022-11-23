@@ -21,7 +21,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   });
 
   const linkToTweet = encodeURI(
-    `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis}`
+    `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis} ${window.location.href}`
   );
 
   return (

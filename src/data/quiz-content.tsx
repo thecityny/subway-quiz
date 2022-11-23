@@ -29,7 +29,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
         If you pay attention to exits you’ll have seen this one. Where is it at?
       </>
     ),
-    correctAnswer: 164,
+    correctAnswer: 318,
   },
   {
     photo: require("../assets/images/q5.jpg"),

@@ -9,38 +9,59 @@ export type QuestionContent = {
 export const getQuizContent: () => QuestionContent[] = () => [
   {
     photo: require("../assets/images/q1.jpg"),
-    caption: <>At which station can you find these stylish signs?</>,
+    caption: (
+      <>
+        At what major Downtown Brooklyn transfer hub can you find these stylish
+        signs?
+      </>
+    ),
     correctAnswer: 636,
   },
   {
     photo: require("../assets/images/q2.jpg"),
-    caption: <>Which stop is this at?</>,
+    caption: (
+      <>
+        City employees may walk by this plaque on their way to work. What stop
+        is this?
+      </>
+    ),
     correctAnswer: 20,
   },
   {
     photo: require("../assets/images/q3.jpg"),
-    caption: <>Which station are these tiles at?</>,
+    caption: (
+      <>
+        Which Midtown Manhattan station has these tiles, one color of which
+        matches the trains that pass through it?
+      </>
+    ),
     correctAnswer: 609,
   },
   {
     photo: require("../assets/images/q4.jpg"),
     caption: (
       <>
-        If you pay attention to exits you’ll have seen this one. Where is it at?
+        This station connects passengers to a newly renovated space, but if you
+        pay attention to exits you’ll see this relic of the past. Where is it?
       </>
     ),
     correctAnswer: 318,
   },
   {
     photo: require("../assets/images/q5.jpg"),
-    caption: <>At which subway station can you see this sign?</>,
+    caption: (
+      <>
+        At which subway station in the Financial District can you see this sign?
+      </>
+    ),
     correctAnswer: 628,
   },
   {
     photo: require("../assets/images/q6.jpg"),
     caption: (
       <>
-        Which subway station has these cool platform benches by @MTAArtsDesign?
+        Which popular Bronx subway station has these cool platform benches by
+        MTA Arts & Design?
       </>
     ),
     correctAnswer: 604,
@@ -49,34 +70,44 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q7.jpg"),
     caption: (
       <>
-        At which Manhattan subway hub can you find Sol Lewitt’s “Whirls and
-        twirls”?
+        At which West Side Manhattan subway hub can you find Sol Lewitt’s
+        “Whirls and twirls”?
       </>
     ),
     correctAnswer: 614,
   },
   {
     photo: require("../assets/images/q8.jpg"),
-    caption: <>Where is this? Hint: it’s the end of the line.</>,
+    caption: (
+      <>This station is at the end of the line in Queens. Which one is it?</>
+    ),
     correctAnswer: 447,
   },
   {
     photo: require("../assets/images/q9.jpg"),
-    caption: <>Which subway stop is this?</>,
+    caption: (
+      <>
+        At this fully above-ground station in Queens, you can transfer between
+        three different trains. Which subway stop is this?
+      </>
+    ),
     correctAnswer: 461,
   },
   {
     photo: require("../assets/images/q10.jpg"),
     caption: (
       <>
-        One of the few subway stops located at ground level, which one is this?
+        One of the few subway stops located at ground level, in a borough almost
+        entirely made up of underground stations. Which one is this?
       </>
     ),
     correctAnswer: 436,
   },
   {
     photo: require("../assets/images/q11.jpg"),
-    caption: <>Where in the system can you buy bitcoin?</>,
+    caption: (
+      <>In which outer-borough station can you find this Bitcoin machine?</>
+    ),
     correctAnswer: 334,
   },
 ];

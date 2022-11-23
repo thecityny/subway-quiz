@@ -5,6 +5,8 @@ import classnames from "classnames";
 
 // @ts-ignorets-ignore
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-white.svg";
+// @ts-ignorets-ignore
+import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
 
 export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   scorecard,
@@ -24,6 +26,10 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
     `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis} ${window.location.href}`
   );
 
+  const linkToEmail = encodeURI(
+    `mailto:?subject=I scored ${score}/11 on THE CITY's Name that Subway Station Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
+  );
+
   return (
     <div>
       <div className="columns is-multiline is-mobile">
@@ -31,6 +37,32 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           <p className="subtitle has-text-centered">
             You scored a {score} out of {scorecard.length}
           </p>
+        </div>
+        <div className="column is-12 mb-2">
+          <div className="buttons is-centered">
+            <a
+              href={linkToTweet}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button is-twitter"
+            >
+              Share on Twitter
+              <span className="icon ml-1 p-1">
+                <TwitterIcon />
+              </span>
+            </a>
+            <a
+              href={linkToEmail}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button is-dark"
+            >
+              Share via Email
+              <span className="icon ml-1 p-1">
+                <EmailIcon />
+              </span>
+            </a>
+          </div>
         </div>
         <div className="column is-2">
           <p className="is-underlined is-hidden-mobile">Question</p>
@@ -102,19 +134,6 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
           );
         })}
       </div>
-      <p className="has-text-centered mt-6">
-        <a
-          href={linkToTweet}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="button is-twitter"
-        >
-          Share my score
-          <span className="icon ml-3 p-1">
-            <TwitterIcon />
-          </span>
-        </a>
-      </p>
     </div>
   );
 };

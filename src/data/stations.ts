@@ -2670,7 +2670,7 @@ export const MTA_STATIONS: Station[] = [
   },
   {
     id: 609,
-    name: "42 St - Bryant Pk / 5 Av",
+    name: "42 St - Bryant Park / 5 Av",
     trains: ["B", "D", "F", "M", "7"],
     borough: "M",
   },

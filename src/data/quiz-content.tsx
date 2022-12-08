@@ -21,11 +21,11 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q2.jpg"),
     caption: (
       <>
-        City employees may walk by this plaque on their way to work. What stop
-        is this?
+        At which West Side Manhattan subway hub can you find Sol Lewitt’s
+        “Whirls and twirls”?
       </>
     ),
-    correctAnswer: 20,
+    correctAnswer: 614,
   },
   {
     photo: require("../assets/images/q3.jpg"),
@@ -69,22 +69,12 @@ export const getQuizContent: () => QuestionContent[] = () => [
   {
     photo: require("../assets/images/q7.jpg"),
     caption: (
-      <>
-        At which West Side Manhattan subway hub can you find Sol Lewitt’s
-        “Whirls and twirls”?
-      </>
-    ),
-    correctAnswer: 614,
-  },
-  {
-    photo: require("../assets/images/q8.jpg"),
-    caption: (
       <>This station is at the end of the line in Queens. Which one is it?</>
     ),
     correctAnswer: 447,
   },
   {
-    photo: require("../assets/images/q9.jpg"),
+    photo: require("../assets/images/q8.jpg"),
     caption: (
       <>
         At this fully above-ground station in Queens, you can transfer between
@@ -94,7 +84,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
     correctAnswer: 461,
   },
   {
-    photo: require("../assets/images/q10.jpg"),
+    photo: require("../assets/images/q9.jpg"),
     caption: (
       <>
         One of the few subway stops located at ground level, in a borough almost
@@ -104,7 +94,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
     correctAnswer: 436,
   },
   {
-    photo: require("../assets/images/q11.jpg"),
+    photo: require("../assets/images/q10.jpg"),
     caption: (
       <>In which outer-borough station can you find this Bitcoin machine?</>
     ),

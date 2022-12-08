@@ -61,6 +61,7 @@ export const Question: React.FC<QuestionProps> = ({
                 "button",
                 "is-fullwidth",
                 "mb-2",
+                hasUserGuessed && stationID === correctAnswer && "is-success",
                 hasUserGuessed && "is-static"
               )}
               key={stationID}

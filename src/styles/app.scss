@@ -258,7 +258,11 @@ footer .footer {
         }
 
         &.is-success {
-          background: green;
+          background: hsl(138deg 55% 70%);
+        }
+
+        &.is-failure {
+          background: hsl(348deg 100% 88%);
         }
 
         p {

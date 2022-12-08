@@ -38,7 +38,7 @@ export const Question: React.FC<QuestionProps> = ({
   const { photo, caption, correctAnswer, otherChoices } =
     getQuizContent()[questionNumber - 1];
 
-  const [hasUserGuessed, setHasUserGuessed] = useState(false);
+  const [userGuess, setUserGuess] = useState(0);
   const [choicesList, setChoicesList] = useState([
     correctAnswer,
     ...otherChoices,
@@ -61,13 +61,17 @@ export const Question: React.FC<QuestionProps> = ({
                 "button",
                 "is-fullwidth",
                 "mb-2",
-                hasUserGuessed && stationID === correctAnswer && "is-success",
-                hasUserGuessed && "is-static"
+                !!userGuess && stationID === correctAnswer && "is-success",
+                !!userGuess &&
+                  stationID === userGuess &&
+                  stationID !== correctAnswer &&
+                  "is-failure",
+                !!userGuess && "is-static"
               )}
               key={stationID}
-              disabled={hasUserGuessed}
+              disabled={!!userGuess && stationID !== userGuess}
               onClick={() => {
-                setHasUserGuessed(true);
+                setUserGuess(stationID);
                 submitGuess(stationID, questionNumber);
               }}
             >
@@ -110,7 +114,20 @@ export const Question: React.FC<QuestionProps> = ({
             {caption}
           </h2>
 
-          <p className="mb-2">Your guess:</p>
+          <p className="mb-2">
+            Your guess:{" "}
+            {userGuess === correctAnswer ? (
+              <span className="has-text-success has-text-weight-bold">
+                Correct!
+              </span>
+            ) : !!userGuess ? (
+              <span className="has-text-danger has-text-weight-bold">
+                Wrong.
+              </span>
+            ) : (
+              <></>
+            )}
+          </p>
           <StationChoices />
           <AnchorLink
             href={
@@ -122,7 +139,7 @@ export const Question: React.FC<QuestionProps> = ({
               "button",
               "is-dark",
               "mt-4",
-              !hasUserGuessed && "is-invisible"
+              !userGuess && "is-invisible"
             )}
           >
             {questionNumber > getQuizContent().length - 1
@@ -168,7 +185,7 @@ export const Question: React.FC<QuestionProps> = ({
               "button",
               "is-dark",
               "mt-4",
-              !hasUserGuessed && "is-invisible"
+              !userGuess && "is-invisible"
             )}
           >
             {questionNumber > getQuizContent().length - 1

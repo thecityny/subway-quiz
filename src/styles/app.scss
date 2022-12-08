@@ -70,6 +70,7 @@ footer .footer {
         margin-bottom: 4rem;
       }
     }
+
     svg {
       position: absolute;
       top: 20%;
@@ -80,6 +81,7 @@ footer .footer {
       z-index: 10;
     }
     @media screen and (max-width: 768px) {
+      border-bottom: 3px solid $city-grey;
       svg {
         top: 44%;
         width: 100vh;
@@ -244,6 +246,7 @@ footer .footer {
         color: black;
         border-radius: 5px;
         z-index: 5;
+        padding: 0.75rem 0.65rem;
         border: 2px solid black;
         background: transparent;
         font-family: $sans;

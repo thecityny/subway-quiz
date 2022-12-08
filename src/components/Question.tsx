@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import classnames from "classnames";
-
-import "react-lazy-load-image-component/src/effects/blur.css";
-
 import { getStationFromId, Train } from "../data/stations";
 import { getQuizContent } from "../data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 type QuestionProps = {
   questionNumber: number;
@@ -51,6 +50,35 @@ export const Question: React.FC<QuestionProps> = ({
     // eslint-disable-next-line
   }, []);
 
+  const StationChoices = () => (
+    <div className="station-choices">
+      {choicesList.map((stationID) => {
+        const station = getStationFromId(stationID);
+        return (
+          !!station && (
+            <button
+              className={classnames(
+                "button",
+                "is-fullwidth",
+                "mb-2",
+                hasUserGuessed && "is-static"
+              )}
+              key={stationID}
+              disabled={hasUserGuessed}
+              onClick={() => {
+                setHasUserGuessed(true);
+                submitGuess(stationID, questionNumber);
+              }}
+            >
+              <p className="mr-2">{station.name}</p>{" "}
+              <ColoredLineIcons trains={station.trains} />
+            </button>
+          )
+        );
+      })}
+    </div>
+  );
+
   return (
     <div id={`q${questionNumber}`}>
       <div className="columns question is-align-items-center is-hidden-mobile">
@@ -82,26 +110,7 @@ export const Question: React.FC<QuestionProps> = ({
           </h2>
 
           <p className="mb-2">Your guess:</p>
-          <div className="station-choices">
-            {choicesList.map((stationID) => {
-              const station = getStationFromId(stationID);
-              return (
-                !!station && (
-                  <div
-                    className="button is-fullwidth is-outlined mb-2"
-                    key={stationID}
-                    onClick={() => {
-                      setHasUserGuessed(true);
-                      submitGuess(stationID, questionNumber);
-                    }}
-                  >
-                    <p className="mr-2">{station.name}</p>{" "}
-                    <ColoredLineIcons trains={station.trains} />
-                  </div>
-                )
-              );
-            })}
-          </div>
+          <StationChoices />
           <AnchorLink
             href={
               questionNumber > getQuizContent().length - 1
@@ -147,25 +156,7 @@ export const Question: React.FC<QuestionProps> = ({
             {caption}
           </h2>
           <p className="mb-2">Your guess:</p>
-          <div className="station-choices">
-            {choicesList.map((stationID) => {
-              const station = getStationFromId(stationID);
-              return (
-                !!station && (
-                  <div
-                    className="button is-fullwidth is-outlined"
-                    key={stationID}
-                    onClick={() => {
-                      setHasUserGuessed(true);
-                      submitGuess(stationID, questionNumber);
-                    }}
-                  >
-                    {station.name} <ColoredLineIcons trains={station.trains} />
-                  </div>
-                )
-              );
-            })}
-          </div>
+          <StationChoices />
           <AnchorLink
             href={
               questionNumber > getQuizContent().length - 1

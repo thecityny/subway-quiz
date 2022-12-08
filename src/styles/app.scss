@@ -253,6 +253,10 @@ footer .footer {
         flex-wrap: wrap;
         height: fit-content;
 
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 9px;
+        }
+
         p {
           white-space: break-spaces;
           text-align: left;

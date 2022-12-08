@@ -4,12 +4,7 @@ import classnames from "classnames";
 
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-import {
-  getFullBoroughName,
-  getStationFromId,
-  Station,
-  Train,
-} from "../data/stations";
+import { getStationFromId, Train } from "../data/stations";
 import { getQuizContent } from "../data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
@@ -53,6 +48,7 @@ export const Question: React.FC<QuestionProps> = ({
   // Shuffle choices on first render:
   useEffect(() => {
     setChoicesList(shuffleArray([correctAnswer, ...otherChoices]));
+    // eslint-disable-next-line
   }, []);
 
   return (

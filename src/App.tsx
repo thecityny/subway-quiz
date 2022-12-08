@@ -58,7 +58,7 @@ export const App = () => {
             <div className="copy-container has-text-centered">
               <h1 className="title">Name that Subway Station</h1>
               <p className="subtitle mb-6">
-                Do you know NYC’s transit system as well as THE CITY’s transit
+                Do you know NYC’s subway system as well as THE CITY’s transit
                 reporter?
               </p>
               <span className="byline">

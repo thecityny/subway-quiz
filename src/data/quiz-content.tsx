@@ -20,7 +20,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q2.jpg"),
     caption: (
       <>
-        At which Manhattan subway hub can you find Sol Lewitt’s “Whirls and
+        At which Manhattan subway hub can you find Sol LeWitt’s “Whirls and
         twirls”?
       </>
     ),

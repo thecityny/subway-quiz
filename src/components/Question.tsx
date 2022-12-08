@@ -82,20 +82,21 @@ export const Question: React.FC<QuestionProps> = ({
           </h2>
 
           <p className="mb-2">Your guess:</p>
-          <div className="station-search-bar">
+          <div className="station-choices">
             {choicesList.map((stationID) => {
               const station = getStationFromId(stationID);
               return (
                 !!station && (
                   <div
-                    className="button is-fullwidth is-outlined"
+                    className="button is-fullwidth is-outlined mb-2"
                     key={stationID}
                     onClick={() => {
                       setHasUserGuessed(true);
                       submitGuess(stationID, questionNumber);
                     }}
                   >
-                    {station.name} <ColoredLineIcons trains={station.trains} />
+                    <p className="mr-2">{station.name}</p>{" "}
+                    <ColoredLineIcons trains={station.trains} />
                   </div>
                 )
               );
@@ -146,7 +147,7 @@ export const Question: React.FC<QuestionProps> = ({
             {caption}
           </h2>
           <p className="mb-2">Your guess:</p>
-          <div className="station-search-bar">
+          <div className="station-choices">
             {choicesList.map((stationID) => {
               const station = getStationFromId(stationID);
               return (

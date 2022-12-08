@@ -238,32 +238,24 @@ footer .footer {
       }
     }
 
-    .station-search-bar {
+    .station-choices {
       max-width: 500px;
-      > div > .wrapper {
+      > .button {
         color: black;
         border-radius: 5px;
         z-index: 5;
         border: 2px solid black;
         background: transparent;
+        font-family: $sans;
+        color: #333;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        height: fit-content;
 
-        > div:not(:first-child) {
-          background-color: $mta-background;
-          z-index: 10;
-          color: black;
-        }
-
-        > div > div > svg {
-          fill: black;
-        }
-
-        input {
-          font-family: $sans;
-          color: #333;
-        }
-
-        li .ellipsis {
-          white-space: normal;
+        p {
+          white-space: break-spaces;
+          text-align: left;
         }
       }
     }

@@ -66,9 +66,12 @@ export const getQuizContent: () => QuestionContent[] = () => [
   {
     photo: require("../assets/images/q7.jpg"),
     caption: (
-      <>This station is at the end of the line in Queens. Which one is it?</>
+      <>
+        This train yard is right next to a sports stadium. Which station is
+        here?
+      </>
     ),
-    correctAnswer: 447,
+    correctAnswer: 448,
   },
   {
     photo: require("../assets/images/q8.jpg"),

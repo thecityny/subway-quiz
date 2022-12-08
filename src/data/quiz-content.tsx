@@ -90,7 +90,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 461,
-    otherChoices: [273, 278, 97],
+    otherChoices: [273, 278, 101],
   },
   {
     photo: require("../assets/images/q9.jpg"),

@@ -4,6 +4,7 @@ export type QuestionContent = {
   photo: string;
   caption: React.ReactNode;
   correctAnswer: number;
+  otherChoices: number[];
 };
 
 export const getQuizContent: () => QuestionContent[] = () => [
@@ -13,6 +14,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       <>At what major Brooklyn transfer hub can you find these stylish signs?</>
     ),
     correctAnswer: 636,
+    otherChoices: [175, 621, 620],
   },
   {
     photo: require("../assets/images/q2.jpg"),
@@ -23,6 +25,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 614,
+    otherChoices: [602, 635, 310],
   },
   {
     photo: require("../assets/images/q3.jpg"),
@@ -33,6 +36,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 609,
+    otherChoices: [607, 407, 9],
   },
   {
     photo: require("../assets/images/q4.jpg"),
@@ -43,6 +47,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 318,
+    otherChoices: [164, 341, 198],
   },
   {
     photo: require("../assets/images/q5.jpg"),
@@ -52,6 +57,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 628,
+    otherChoices: [622, 329, 327],
   },
   {
     photo: require("../assets/images/q6.jpg"),
@@ -62,6 +68,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 604,
+    otherChoices: [603, 293, 364],
   },
   {
     photo: require("../assets/images/q7.jpg"),
@@ -72,6 +79,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 448,
+    otherChoices: [58, 501, 617],
   },
   {
     photo: require("../assets/images/q8.jpg"),
@@ -82,6 +90,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 461,
+    otherChoices: [273, 278, 97],
   },
   {
     photo: require("../assets/images/q9.jpg"),
@@ -92,10 +101,12 @@ export const getQuizContent: () => QuestionContent[] = () => [
       </>
     ),
     correctAnswer: 436,
+    otherChoices: [610, 447, 143],
   },
   {
     photo: require("../assets/images/q10.jpg"),
     caption: <>In which station can you find this Bitcoin machine?</>,
     correctAnswer: 334,
+    otherChoices: [413, 223, 283],
   },
 ];

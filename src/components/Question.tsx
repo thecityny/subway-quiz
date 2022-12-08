@@ -1,18 +1,11 @@
-import React, { useState } from "react";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import classnames from "classnames";
-
-import "react-lazy-load-image-component/src/effects/blur.css";
-
-import {
-  getFullBoroughName,
-  MTA_STATIONS,
-  Station,
-  Train,
-} from "../data/stations";
+import { getStationFromId, Train } from "../data/stations";
 import { getQuizContent } from "../data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 type QuestionProps = {
   questionNumber: number;
@@ -29,29 +22,74 @@ export const ColoredLineIcons: React.FC<{ trains: Train[] }> = ({ trains }) => (
   </span>
 );
 
+const shuffleArray = (array: any[]) => {
+  let newArray = array;
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [array[j], array[i]];
+  }
+  return newArray;
+};
+
 export const Question: React.FC<QuestionProps> = ({
   questionNumber,
   submitGuess,
 }) => {
-  const content = getQuizContent()[questionNumber - 1];
+  const { photo, caption, correctAnswer, otherChoices } =
+    getQuizContent()[questionNumber - 1];
 
-  const [searchText, setSearchText] = useState("");
+  const [userGuess, setUserGuess] = useState(0);
+  const [choicesList, setChoicesList] = useState([
+    correctAnswer,
+    ...otherChoices,
+  ]);
 
-  const formatResult = (item: Station) => {
-    return (
-      <p className="has-text-black">
-        {item.name} <ColoredLineIcons trains={item.trains} />{" "}
-        <span className="light-text">{getFullBoroughName(item.borough)}</span>
-      </p>
-    );
-  };
+  // Shuffle choices on first render:
+  useEffect(() => {
+    setChoicesList(shuffleArray([correctAnswer, ...otherChoices]));
+    // eslint-disable-next-line
+  }, []);
+
+  const StationChoices = () => (
+    <div className="station-choices">
+      {choicesList.map((stationID) => {
+        const station = getStationFromId(stationID);
+        return (
+          !!station && (
+            <button
+              className={classnames(
+                "button",
+                "is-fullwidth",
+                "mb-2",
+                !!userGuess && stationID === correctAnswer && "is-success",
+                !!userGuess &&
+                  stationID === userGuess &&
+                  stationID !== correctAnswer &&
+                  "is-failure",
+                !!userGuess && "is-static"
+              )}
+              key={stationID}
+              disabled={!!userGuess && stationID !== userGuess}
+              onClick={() => {
+                setUserGuess(stationID);
+                submitGuess(stationID, questionNumber);
+              }}
+            >
+              <p className="mr-2">{station.name}</p>{" "}
+              <ColoredLineIcons trains={station.trains} />
+            </button>
+          )
+        );
+      })}
+    </div>
+  );
 
   return (
     <div id={`q${questionNumber}`}>
       <div className="columns question is-align-items-center is-hidden-mobile">
         {/* DESKTOP AND TABLET COLUMNS: */}
         <div className="column is-7 has-text-centered">
-          <LazyLoadImage src={content.photo} width="100%" effect="blur" />
+          <LazyLoadImage src={photo} width="100%" effect="blur" />
         </div>
         <div className="column is-1">
           <div
@@ -73,23 +111,24 @@ export const Question: React.FC<QuestionProps> = ({
         <div className="column is-4">
           <h1 className="mt-6 mb-0">#{questionNumber}</h1>
           <h2 className="has-text-black has-text-weight-bold mb-4">
-            {content.caption}
+            {caption}
           </h2>
 
-          <p className="mb-2">Your guess:</p>
-          <div className="station-search-bar">
-            <ReactSearchAutocomplete
-              items={MTA_STATIONS}
-              onSelect={(result) => submitGuess(result.id, questionNumber)}
-              onSearch={(input) => setSearchText(input)}
-              onClear={() => submitGuess(0, questionNumber)}
-              inputSearchString={searchText}
-              placeholder="Search stations"
-              maxResults={5}
-              showIcon={false}
-              formatResult={formatResult}
-            />
-          </div>
+          <p className="mb-2">
+            Your guess:{" "}
+            {userGuess === correctAnswer ? (
+              <span className="has-text-success has-text-weight-bold">
+                Correct!
+              </span>
+            ) : !!userGuess ? (
+              <span className="has-text-danger has-text-weight-bold">
+                Wrong.
+              </span>
+            ) : (
+              <></>
+            )}
+          </p>
+          <StationChoices />
           <AnchorLink
             href={
               questionNumber > getQuizContent().length - 1
@@ -100,7 +139,7 @@ export const Question: React.FC<QuestionProps> = ({
               "button",
               "is-dark",
               "mt-4",
-              !searchText && "is-invisible"
+              !userGuess && "is-invisible"
             )}
           >
             {questionNumber > getQuizContent().length - 1
@@ -129,25 +168,13 @@ export const Question: React.FC<QuestionProps> = ({
           </div>
         </div>
         <div className="column is-11">
-          <LazyLoadImage src={content.photo} width="100%" effect="blur" />
+          <LazyLoadImage src={photo} width="100%" effect="blur" />
           <h1 className="mt-4 mb-0">#{questionNumber}</h1>
           <h2 className="has-text-black has-text-weight-bold mb-4">
-            {content.caption}
+            {caption}
           </h2>
           <p className="mb-2">Your guess:</p>
-          <div className="station-search-bar">
-            <ReactSearchAutocomplete
-              items={MTA_STATIONS}
-              onSelect={(result) => submitGuess(result.id, questionNumber)}
-              onSearch={(input) => setSearchText(input)}
-              onClear={() => submitGuess(0, questionNumber)}
-              inputSearchString={searchText}
-              placeholder="Search stations"
-              maxResults={5}
-              showIcon={false}
-              formatResult={formatResult}
-            />
-          </div>
+          <StationChoices />
           <AnchorLink
             href={
               questionNumber > getQuizContent().length - 1
@@ -158,7 +185,7 @@ export const Question: React.FC<QuestionProps> = ({
               "button",
               "is-dark",
               "mt-4",
-              !searchText && "is-invisible"
+              !userGuess && "is-invisible"
             )}
           >
             {questionNumber > getQuizContent().length - 1

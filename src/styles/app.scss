@@ -238,32 +238,36 @@ footer .footer {
       }
     }
 
-    .station-search-bar {
+    .station-choices {
       max-width: 500px;
-      > div > .wrapper {
+      > .button {
         color: black;
         border-radius: 5px;
         z-index: 5;
         border: 2px solid black;
         background: transparent;
+        font-family: $sans;
+        color: #333;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        height: fit-content;
 
-        > div:not(:first-child) {
-          background-color: $mta-background;
-          z-index: 10;
-          color: black;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 9px;
         }
 
-        > div > div > svg {
-          fill: black;
+        &.is-success {
+          background: hsl(138deg 55% 70%);
         }
 
-        input {
-          font-family: $sans;
-          color: #333;
+        &.is-failure {
+          background: hsl(348deg 100% 88%);
         }
 
-        li .ellipsis {
-          white-space: normal;
+        p {
+          white-space: break-spaces;
+          text-align: left;
         }
       }
     }

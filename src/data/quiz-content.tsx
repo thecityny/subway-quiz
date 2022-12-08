@@ -10,10 +10,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
   {
     photo: require("../assets/images/q1.jpg"),
     caption: (
-      <>
-        At what major Downtown Brooklyn transfer hub can you find these stylish
-        signs?
-      </>
+      <>At what major Brooklyn transfer hub can you find these stylish signs?</>
     ),
     correctAnswer: 636,
   },
@@ -21,8 +18,8 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q2.jpg"),
     caption: (
       <>
-        At which West Side Manhattan subway hub can you find Sol Lewitt’s
-        “Whirls and twirls”?
+        At which Manhattan subway hub can you find Sol Lewitt’s “Whirls and
+        twirls”?
       </>
     ),
     correctAnswer: 614,
@@ -31,8 +28,8 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q3.jpg"),
     caption: (
       <>
-        Which Midtown Manhattan station has these tiles, one color of which
-        matches the trains that pass through it?
+        Which Manhattan station has these tiles, one color of which matches the
+        trains that pass through it?
       </>
     ),
     correctAnswer: 609,
@@ -95,9 +92,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
   },
   {
     photo: require("../assets/images/q10.jpg"),
-    caption: (
-      <>In which outer-borough station can you find this Bitcoin machine?</>
-    ),
+    caption: <>In which station can you find this Bitcoin machine?</>,
     correctAnswer: 334,
   },
 ];

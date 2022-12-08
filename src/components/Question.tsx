@@ -51,37 +51,51 @@ export const Question: React.FC<QuestionProps> = ({
   }, []);
 
   const StationChoices = () => (
-    <div className="station-choices">
-      {choicesList.map((stationID) => {
-        const station = getStationFromId(stationID);
-        return (
-          !!station && (
-            <button
-              className={classnames(
-                "button",
-                "is-fullwidth",
-                "mb-2",
-                !!userGuess && stationID === correctAnswer && "is-success",
-                !!userGuess &&
-                  stationID === userGuess &&
-                  stationID !== correctAnswer &&
-                  "is-failure",
-                !!userGuess && "is-static"
-              )}
-              key={stationID}
-              disabled={!!userGuess && stationID !== userGuess}
-              onClick={() => {
-                setUserGuess(stationID);
-                submitGuess(stationID, questionNumber);
-              }}
-            >
-              <p className="mr-2">{station.name}</p>{" "}
-              <ColoredLineIcons trains={station.trains} />
-            </button>
-          )
-        );
-      })}
-    </div>
+    <>
+      <p className="mb-2">
+        Your guess:{" "}
+        {userGuess === correctAnswer ? (
+          <span className="has-text-success has-text-weight-bold">
+            Correct!
+          </span>
+        ) : !!userGuess ? (
+          <span className="has-text-danger has-text-weight-bold">Wrong.</span>
+        ) : (
+          <></>
+        )}
+      </p>
+      <div className="station-choices">
+        {choicesList.map((stationID) => {
+          const station = getStationFromId(stationID);
+          return (
+            !!station && (
+              <button
+                className={classnames(
+                  "button",
+                  "is-fullwidth",
+                  "mb-2",
+                  !!userGuess && stationID === correctAnswer && "is-success",
+                  !!userGuess &&
+                    stationID === userGuess &&
+                    stationID !== correctAnswer &&
+                    "is-failure",
+                  !!userGuess && "is-static"
+                )}
+                key={stationID}
+                disabled={!!userGuess && stationID !== userGuess}
+                onClick={() => {
+                  setUserGuess(stationID);
+                  submitGuess(stationID, questionNumber);
+                }}
+              >
+                <p className="mr-2">{station.name}</p>{" "}
+                <ColoredLineIcons trains={station.trains} />
+              </button>
+            )
+          );
+        })}
+      </div>
+    </>
   );
 
   return (
@@ -113,21 +127,6 @@ export const Question: React.FC<QuestionProps> = ({
           <h2 className="has-text-black has-text-weight-bold mb-4">
             {caption}
           </h2>
-
-          <p className="mb-2">
-            Your guess:{" "}
-            {userGuess === correctAnswer ? (
-              <span className="has-text-success has-text-weight-bold">
-                Correct!
-              </span>
-            ) : !!userGuess ? (
-              <span className="has-text-danger has-text-weight-bold">
-                Wrong.
-              </span>
-            ) : (
-              <></>
-            )}
-          </p>
           <StationChoices />
           <AnchorLink
             href={
@@ -173,7 +172,6 @@ export const Question: React.FC<QuestionProps> = ({
           <h2 className="has-text-black has-text-weight-bold mb-4">
             {caption}
           </h2>
-          <p className="mb-2">Your guess:</p>
           <StationChoices />
           <AnchorLink
             href={

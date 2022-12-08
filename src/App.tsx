@@ -133,6 +133,12 @@ export const App = () => {
             </div>
           </div>
         </div>
+        <div className="copy-container has-text-centered">
+          <p className="copy credit-box">
+            Designed and developed by Sam Rabiyah. Edited by Zainab Shah, Hasani
+            Gittens, Richard Kim, and Scott Klein.
+          </p>
+        </div>
       </div>
       <Footer />
     </article>

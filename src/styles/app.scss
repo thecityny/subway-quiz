@@ -80,16 +80,18 @@ footer .footer {
       padding: 2rem;
       z-index: 10;
     }
-    @media screen and (max-width: 768px) {
-      border-bottom: 3px solid $city-grey;
-      svg {
-        top: 44%;
-        width: 100vh;
-        transform: rotate(90deg);
-      }
-      .hero-body .copy-container {
-        margin-top: 0;
-        background-color: $mta-background-transparent;
+    &:first-child {
+      @media screen and (max-width: 768px) {
+        border-bottom: 3px solid $city-grey;
+        svg {
+          top: 44%;
+          width: 100vh;
+          transform: rotate(90deg);
+        }
+        .hero-body .copy-container {
+          margin-top: 0;
+          background-color: $mta-background-transparent;
+        }
       }
     }
 
@@ -165,7 +167,7 @@ footer .footer {
 
     @media screen and (max-width: 768px) {
       padding: 0 0.5rem;
-      height: 150vh;
+      height: 180vh;
     }
     .column {
       padding: 3rem;

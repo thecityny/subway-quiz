@@ -74,8 +74,8 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q7.jpg"),
     caption: (
       <>
-        This train yard is right next to a sports stadium. Which station is
-        here?
+        This train yard is right next to a sports stadium. Which is the closest
+        station?
       </>
     ),
     correctAnswer: 448,

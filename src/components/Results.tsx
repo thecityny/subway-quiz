@@ -8,6 +8,20 @@ import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-wh
 // @ts-ignorets-ignore
 import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
 
+const resultsText = [
+  "Go back to Ohio.",
+  "You take taxis a lot, right?",
+  "No, this isn’t a commuter railroad.",
+  "Maybe take the ferry instead.",
+  "Transfer… to another city.",
+  "Congratulations, you did half as well as our transit reporter, Jose Martinez.",
+  "The MTA thanks you for riding.",
+  "Good service.",
+  "Welcome to New York City.",
+  "Fine, you can stay.",
+  "Congratulations! You know as much about the subway transit reporter, Jose Martinez.",
+];
+
 export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   scorecard,
 }) => {
@@ -35,7 +49,11 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
       <div className="columns is-multiline is-mobile">
         <div className="column is-12">
           <p className="subtitle has-text-centered">
-            You scored a {score} out of {scorecard.length}
+            You scored a{" "}
+            <b>
+              {score} out of {scorecard.length}
+            </b>
+            . {resultsText[score]}
           </p>
         </div>
         <div className="column is-12 mb-2">
@@ -46,7 +64,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               rel="noopener noreferrer"
               className="button is-twitter"
             >
-              Share on Twitter
+              Tweet my Score
               <span className="icon ml-1 p-1">
                 <TwitterIcon />
               </span>
@@ -57,7 +75,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               rel="noopener noreferrer"
               className="button is-dark"
             >
-              Share via Email
+              Email my Score
               <span className="icon ml-1 p-1">
                 <EmailIcon />
               </span>
@@ -90,7 +108,10 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                     : "has-text-weight-light"
                 )}
               >
-                #{i + 1}
+                #{i + 1}{" "}
+                {gotAnswerCorrect && (
+                  <span className="line-icon has-background-success">✓</span>
+                )}
               </div>
               <div
                 key={`2-${i}`}

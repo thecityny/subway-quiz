@@ -94,7 +94,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 window.scrollTo(0, 0);
               }}
             >
-              Take it again <span className="icon-text ml-1">↺</span>
+              Take it again <span className="icon-text ml-2">↺</span>
             </button>
           </div>
         </div>

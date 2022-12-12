@@ -135,8 +135,16 @@ export const App = () => {
         </div>
         <div className="copy-container has-text-centered">
           <p className="copy credit-box">
-            Designed and developed by Sam Rabiyah. Edited by Zainab Shah, Hasani
-            Gittens, Richard Kim, and Scott Klein.
+            This project was designed and developed by THE CITY. The project
+            code is open source and available to the public{" "}
+            <a
+              href="https://github.com/thecityny/subway-quiz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              via Github
+            </a>
+            .
           </p>
         </div>
       </div>

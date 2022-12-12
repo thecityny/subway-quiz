@@ -98,14 +98,14 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
             </button>
           </div>
         </div>
-        <div className="column is-2">
-          <p className="is-underlined is-hidden-mobile">Question</p>
+        <div className="column is-2 is-underlined">
+          <p className="is-hidden-mobile">Question</p>
         </div>
-        <div className="column is-5">
-          <p className="is-underlined">Your answer</p>
+        <div className="column is-5 is-underlined">
+          <p>Your answer</p>
         </div>
-        <div className="column is-5 pr-0">
-          <p className="is-underlined">Correct answer</p>
+        <div className="column is-5 pr-0 is-underlined ">
+          <p>Correct answer</p>
         </div>
         {scorecard.map((answer, i) => {
           const usersStation = getStationFromId(answer.usersGuess);
@@ -119,14 +119,16 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 className={classnames(
                   "column",
                   "is-2",
+                  i === 0 && "is-first-answer",
                   gotAnswerCorrect
                     ? "has-text-weight-bold"
                     : "has-text-weight-light"
                 )}
               >
-                #{i + 1}{" "}
-                {gotAnswerCorrect && (
-                  <span className="line-icon has-background-success">✓</span>
+                {gotAnswerCorrect ? (
+                  <span className="tag is-success">#{i + 1} ✓</span>
+                ) : (
+                  <>#{i + 1}</>
                 )}
               </div>
               <div
@@ -134,6 +136,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 className={classnames(
                   "column",
                   "is-5",
+                  i === 0 && "is-first-answer",
                   gotAnswerCorrect
                     ? "has-text-weight-bold"
                     : "has-text-weight-light"
@@ -153,6 +156,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 className={classnames(
                   "column",
                   "is-5",
+                  i === 0 && "is-first-answer",
                   gotAnswerCorrect
                     ? "has-text-weight-bold"
                     : "has-text-weight-light"

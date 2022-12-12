@@ -159,6 +159,12 @@ footer .footer {
     color: #666;
   }
 
+  // Override Bulma helper class to make text more legible:
+  .has-text-success,
+  .has-text-danger {
+    filter: brightness(85%);
+  }
+
   // QUESTIONS:
 
   .question {
@@ -291,6 +297,20 @@ footer .footer {
 
     @media screen and (max-width: 768px) {
       padding: 2rem 1.5rem;
+    }
+
+    .column.is-2,
+    .column.is-5 {
+      padding: 0.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      &.is-underlined,
+      &.is-first-answer {
+        border-top: none;
+      }
+      .tag {
+        margin-left: -0.25rem;
+        padding: 0 0.25rem;
+      }
     }
 
     .button {

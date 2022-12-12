@@ -96,12 +96,12 @@ footer .footer {
     }
 
     .start-button {
-      width: 80px;
-      height: 80px;
+      width: 95px;
+      height: 95px;
       background-color: $city-black;
       font-weight: bold;
       border-radius: 50%;
-      z-index: 2;
+      z-index: 10;
       transform: translateY(-4rem);
       text-align: center;
       color: white;

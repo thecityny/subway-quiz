@@ -88,7 +88,7 @@ export const App = () => {
             }
             className="start-button is-flex is-align-items-center is-justify-content-center"
           >
-            {firstEmptyQuestion?.questionNumber === 1
+            {questionsLeftToAnswer.length === blankScorecard.length
               ? "Start"
               : !!firstEmptyQuestion
               ? "Resume"

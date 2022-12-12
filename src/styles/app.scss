@@ -96,12 +96,12 @@ footer .footer {
     }
 
     .start-button {
-      width: 80px;
-      height: 80px;
+      width: 95px;
+      height: 95px;
       background-color: $city-black;
       font-weight: bold;
       border-radius: 50%;
-      z-index: 2;
+      z-index: 10;
       transform: translateY(-4rem);
       text-align: center;
       color: white;
@@ -293,9 +293,12 @@ footer .footer {
       padding: 2rem 1.5rem;
     }
 
-    .button.is-twitter {
-      background-color: $twitter-blue;
-      color: white;
+    .button {
+      font-family: $sans;
+      &.is-twitter {
+        background-color: $twitter-blue;
+        color: white;
+      }
     }
 
     .icon svg {
@@ -304,6 +307,11 @@ footer .footer {
       top: 0;
       width: 1rem;
       height: 1rem;
+    }
+
+    .icon-text {
+      font-size: 1.6rem;
+      font-weight: 700;
     }
   }
 

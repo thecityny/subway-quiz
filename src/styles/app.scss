@@ -257,9 +257,12 @@ footer .footer {
         justify-content: flex-start;
         flex-wrap: wrap;
         height: fit-content;
+        transition: all 0.1s;
+        box-shadow: rgba(0, 0, 0, 0.75) 0px 2px 0px;
 
         &:hover {
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 9px;
+          top: 2px;
+          box-shadow: none;
         }
 
         &.is-success {

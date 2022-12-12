@@ -16,9 +16,7 @@ export const Header = () => (
       </div>
       <div className="nav-title"></div>
       <div className="nav-links">
-        <a href="https://checkout.fundjournalism.org/memberform?&org_id=thecity&campaign=7011U000000VXZIQA4">
-          Donate
-        </a>
+        <a href="https://donorbox.org/nycdonate">Donate</a>
       </div>
     </div>
   </nav>
@@ -63,7 +61,7 @@ export const Footer = () => {
             <a href="https://thecity.nyc/about/us.html">About</a>
           </li>
           <li>
-            <a href="https://thecity.nyc/about/membership.html">Donate</a>
+            <a href="https://donorbox.org/nycdonate">Donate</a>
           </li>
           <li>
             <a href="https://thecity.nyc/about/team.html">Team</a>

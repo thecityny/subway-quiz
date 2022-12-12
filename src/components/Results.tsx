@@ -44,6 +44,12 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
     `mailto:?subject=I scored ${score}/11 on THE CITY's Name that Subway Station Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
   );
 
+  const resetSavedScore = () => {
+    scorecard.forEach((answer) => {
+      localStorage.removeItem(`stationGuess-${answer.questionNumber}`);
+    });
+  };
+
   return (
     <div>
       <div className="columns is-multiline is-mobile">
@@ -59,17 +65,6 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
         <div className="column is-12 mb-2">
           <div className="buttons is-centered">
             <a
-              href={linkToTweet}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button is-twitter"
-            >
-              Tweet my Score
-              <span className="icon ml-1 p-1">
-                <TwitterIcon />
-              </span>
-            </a>
-            <a
               href={linkToEmail}
               target="_blank"
               rel="noopener noreferrer"
@@ -80,6 +75,28 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 <EmailIcon />
               </span>
             </a>
+            <a
+              href={linkToTweet}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button is-twitter"
+            >
+              Tweet my Score
+              <span className="icon ml-1 p-1">
+                <TwitterIcon />
+              </span>
+            </a>
+
+            <button
+              className="button is-black"
+              onClick={() => {
+                resetSavedScore();
+                window.location.reload();
+                window.scrollTo(0, 0);
+              }}
+            >
+              Restart Quiz <span className="icon-text ml-1">↺</span>
+            </button>
           </div>
         </div>
         <div className="column is-2">

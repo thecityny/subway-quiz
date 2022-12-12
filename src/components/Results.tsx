@@ -9,17 +9,17 @@ import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-wh
 import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
 
 const resultsText = [
-  "Go back to Ohio.",
-  "You take taxis a lot, right?",
+  "As our mayor once said: Go back to Ohio.",
+  "There’s no Metrocard in your wallet, is there?",
   "No, this isn’t a commuter railroad.",
-  "Maybe take the ferry instead.",
   "Transfer… to another city.",
-  "Congratulations, you did half as well as our transit reporter, Jose Martinez.",
+  "Maybe take the ferry instead.",
   "The MTA thanks you for riding.",
   "Good service.",
+  "Your train car lines up to the right exit, every time.",
   "Welcome to New York City.",
   "Fine, you can stay.",
-  "Congratulations! You know as much about the subway transit reporter, Jose Martinez.",
+  "Congratulations! You know as much about the subway as THE CITY’s transit reporter, Jose Martinez.",
 ];
 
 export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({

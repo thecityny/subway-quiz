@@ -48,6 +48,10 @@ export const App = () => {
     .filter((answerKey) => answerKey.usersGuess === 0)
     .map((answerKey) => answerKey.questionNumber);
 
+  const firstEmptyQuestion = scorecard.find(
+    (answerKey) => answerKey.usersGuess === 0
+  );
+
   return (
     <article>
       <Header />
@@ -77,10 +81,18 @@ export const App = () => {
             </div>
           </div>
           <AnchorLink
-            href="#quiz"
+            href={
+              firstEmptyQuestion
+                ? `#q${firstEmptyQuestion.questionNumber}`
+                : "#scorecard"
+            }
             className="start-button is-flex is-align-items-center is-justify-content-center"
           >
-            Start
+            {firstEmptyQuestion?.questionNumber === 1
+              ? "Start"
+              : !!firstEmptyQuestion
+              ? "Resume"
+              : "Results"}
             <br />↓
           </AnchorLink>
         </div>
@@ -97,7 +109,7 @@ export const App = () => {
 
         <div className="hero is-fullheight" id="scorecard">
           <div className="hero-body">
-            <div className="container scorecard-container">
+            <div className="container scorecard-container" id="scorecard">
               <h1 className="title is-spaced has-text-centered">Scorecard</h1>
               {questionsLeftToAnswer.length > 0 ? (
                 <div className="has-text-centered">

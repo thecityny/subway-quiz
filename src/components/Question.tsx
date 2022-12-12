@@ -39,6 +39,15 @@ export const Question: React.FC<QuestionProps> = ({
     getQuizContent()[questionNumber - 1];
 
   const [userGuess, setUserGuess] = useState(0);
+
+  const handleGuess = (stationID: number, setLocalStorage?: boolean) => {
+    setUserGuess(stationID);
+    submitGuess(stationID, questionNumber);
+    if (setLocalStorage) {
+      localStorage.setItem(`stationGuess-${questionNumber}`, `${stationID}`);
+    }
+  };
+
   const [choicesList, setChoicesList] = useState([
     correctAnswer,
     ...otherChoices,
@@ -47,6 +56,13 @@ export const Question: React.FC<QuestionProps> = ({
   // Shuffle choices on first render:
   useEffect(() => {
     setChoicesList(shuffleArray([correctAnswer, ...otherChoices]));
+
+    if (!!localStorage.getItem(`stationGuess-${questionNumber}`)) {
+      const stationID = parseInt(
+        localStorage.getItem(`stationGuess-${questionNumber}`) as string
+      );
+      handleGuess(stationID);
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -83,10 +99,7 @@ export const Question: React.FC<QuestionProps> = ({
                 )}
                 key={stationID}
                 disabled={!!userGuess && stationID !== userGuess}
-                onClick={() => {
-                  setUserGuess(stationID);
-                  submitGuess(stationID, questionNumber);
-                }}
+                onClick={() => handleGuess(stationID, true)}
               >
                 <p className="mr-2">{station.name}</p>{" "}
                 <ColoredLineIcons trains={station.trains} />

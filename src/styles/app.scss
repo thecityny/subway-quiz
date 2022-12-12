@@ -258,7 +258,7 @@ footer .footer {
         flex-wrap: wrap;
         height: fit-content;
         transition: all 0.1s;
-        box-shadow: rgba(0, 0, 0, 0.75) 0px 2px 0px;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 0px;
 
         &:hover {
           top: 2px;
@@ -297,6 +297,10 @@ footer .footer {
       font-family: $sans;
       &.is-twitter {
         background-color: $twitter-blue;
+        color: white;
+      }
+      &.is-restart {
+        background-color: $mta-line-color;
         color: white;
       }
     }

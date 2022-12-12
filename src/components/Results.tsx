@@ -65,17 +65,6 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
         <div className="column is-12 mb-2">
           <div className="buttons is-centered">
             <a
-              href={linkToEmail}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button is-dark"
-            >
-              Email my Score
-              <span className="icon ml-1 p-1">
-                <EmailIcon />
-              </span>
-            </a>
-            <a
               href={linkToTweet}
               target="_blank"
               rel="noopener noreferrer"
@@ -86,9 +75,19 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 <TwitterIcon />
               </span>
             </a>
-
+            <a
+              href={linkToEmail}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button is-dark"
+            >
+              Email my Score
+              <span className="icon ml-1 p-1">
+                <EmailIcon />
+              </span>
+            </a>
             <button
-              className="button is-black"
+              className="button is-restart"
               onClick={() => {
                 resetSavedScore();
                 window.location.reload();

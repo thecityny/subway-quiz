@@ -137,9 +137,7 @@ export const Question: React.FC<QuestionProps> = ({
         </div>
         <div className="column is-4">
           <h1 className="mt-6 mb-0">#{questionNumber}</h1>
-          <h2 className="has-text-black has-text-weight-bold mb-4">
-            {caption}
-          </h2>
+          <h2 className=" has-text-weight-bold mb-4">{caption}</h2>
           <StationChoices />
           <AnchorLink
             href={
@@ -149,7 +147,7 @@ export const Question: React.FC<QuestionProps> = ({
             }
             className={classnames(
               "button",
-              "is-dark",
+              "is-black",
               "mt-4",
               !userGuess && "is-invisible"
             )}
@@ -182,9 +180,7 @@ export const Question: React.FC<QuestionProps> = ({
         <div className="column is-11">
           <LazyLoadImage src={photo} width="100%" effect="blur" />
           <h1 className="mt-4 mb-0">#{questionNumber}</h1>
-          <h2 className="has-text-black has-text-weight-bold mb-4">
-            {caption}
-          </h2>
+          <h2 className="has-text-weight-bold mb-4">{caption}</h2>
           <StationChoices />
           <AnchorLink
             href={
@@ -194,7 +190,7 @@ export const Question: React.FC<QuestionProps> = ({
             }
             className={classnames(
               "button",
-              "is-dark",
+              "is-black",
               "mt-4",
               !userGuess && "is-invisible"
             )}

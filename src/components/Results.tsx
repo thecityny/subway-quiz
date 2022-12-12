@@ -70,7 +70,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               rel="noopener noreferrer"
               className="button is-twitter"
             >
-              Tweet my Score
+              Tweet my score
               <span className="icon ml-1 p-1">
                 <TwitterIcon />
               </span>
@@ -81,7 +81,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               rel="noopener noreferrer"
               className="button is-dark"
             >
-              Email my Score
+              Email my score
               <span className="icon ml-1 p-1">
                 <EmailIcon />
               </span>
@@ -94,7 +94,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 window.scrollTo(0, 0);
               }}
             >
-              Restart Quiz <span className="icon-text ml-1">↺</span>
+              Take it again <span className="icon-text ml-1">↺</span>
             </button>
           </div>
         </div>

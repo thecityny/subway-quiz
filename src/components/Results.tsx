@@ -51,11 +51,11 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   }, []);
 
   const linkToTweet = encodeURI(
-    `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis} ${window.location.href}`
+    `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/10 ${resultsInEmojis} ${window.location.href}`
   );
 
   const linkToEmail = encodeURI(
-    `mailto:?subject=I scored ${score}/11 on THE CITY's Name that Subway Station Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
+    `mailto:?subject=I scored ${score}/10 on THE CITY's Name that Subway Station Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
   );
 
   const resetSavedScore = () => {

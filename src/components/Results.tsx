@@ -1,7 +1,7 @@
 import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
 import { ColoredLineIcons } from "./Question";
-import { logAmplitudeEvent } from "./Amplitude";
+import { logAmplitudeEvent, logAmplitudeEventWithData } from "./Amplitude";
 
 import classnames from "classnames";
 
@@ -9,6 +9,7 @@ import classnames from "classnames";
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-white.svg";
 // @ts-ignorets-ignore
 import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
+import { useEffect, useState } from "react";
 
 const resultsText = [
   "As our mayor once said: Go back to Ohio.",
@@ -27,16 +28,27 @@ const resultsText = [
 export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   scorecard,
 }) => {
-  let score = 0;
-  let resultsInEmojis = "";
-  scorecard.forEach((answer) => {
-    if (answer.usersGuess === answer.correctAnswer) {
-      score++;
-      resultsInEmojis = resultsInEmojis + "✅";
-    } else {
-      resultsInEmojis = resultsInEmojis + "❌";
-    }
-  });
+  const [score, setScore] = useState(0);
+  const [resultsInEmojis, setResultsInEmojis] = useState("");
+
+  useEffect(() => {
+    let score = 0;
+    let resultsInEmojis = "";
+    scorecard.forEach((answer) => {
+      if (answer.usersGuess === answer.correctAnswer) {
+        score++;
+        resultsInEmojis = resultsInEmojis + "✅";
+      } else {
+        resultsInEmojis = resultsInEmojis + "❌";
+      }
+    });
+    setScore(score);
+    setResultsInEmojis(resultsInEmojis);
+    logAmplitudeEventWithData("finishedQuiz", {
+      finalScore: score,
+    });
+    // eslint-disable-next-line
+  }, []);
 
   const linkToTweet = encodeURI(
     `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis} ${window.location.href}`

@@ -12,16 +12,16 @@ import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.
 import { useEffect, useState } from "react";
 
 const resultsText = [
-  "As our mayor once said: Go back to Ohio.",
+  "You know this was about the mass transit system, not the sandwich chain, right?",
   "There’s no Metrocard in your wallet, is there?",
-  "No, this isn’t a commuter railroad.",
+  "The New Jersey Transit is not the subway.",
   "Transfer… to another city.",
   "Maybe take the ferry instead.",
-  "The MTA thanks you for riding.",
-  "Good service.",
-  "Your train car lines up to the right exit, every time.",
   "Welcome to New York City.",
-  "Fine, you can stay.",
+  "The MTA thanks you for riding.",
+  "Good Service",
+  "Your train car lines up to the right exit, every time.",
+  "You’re in a New York State of mind.",
   "Congratulations! You know as much about the subway as THE CITY’s transit reporter, Jose Martinez.",
 ];
 

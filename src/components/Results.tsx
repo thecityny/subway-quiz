@@ -1,6 +1,8 @@
 import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
 import { ColoredLineIcons } from "./Question";
+import { logAmplitudeEvent } from "./Amplitude";
+
 import classnames from "classnames";
 
 // @ts-ignorets-ignore
@@ -69,6 +71,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="button is-twitter"
+              onClick={() => {
+                logAmplitudeEvent("tweetScore");
+              }}
             >
               Tweet my score
               <span className="icon ml-1 p-1">
@@ -80,6 +85,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="button is-dark"
+              onClick={() => {
+                logAmplitudeEvent("emailScore");
+              }}
             >
               Email my score
               <span className="icon ml-1 p-1">
@@ -90,6 +98,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               className="button is-restart"
               onClick={() => {
                 resetSavedScore();
+                logAmplitudeEvent("takeQuizAgain");
                 window.location.reload();
                 window.scrollTo(0, 0);
               }}

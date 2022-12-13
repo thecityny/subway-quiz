@@ -9,7 +9,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/amplitude-js": "^8.16.2",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
@@ -55,7 +54,6 @@
     ]
   },
   "devDependencies": {
-    "@types/amplitude-js": "^8.16.2",
     "@types/react-anchor-link-smooth-scroll": "^1.0.2",
     "@types/react-lazy-load-image-component": "^1.5.2",
     "prettier": "2.7.1"

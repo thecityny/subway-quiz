@@ -1,9 +1,14 @@
 import React from "react";
 
+// @ts-ignore
 import { ReactComponent as Logo } from "../assets/images/logo.svg";
+// @ts-ignore
 import { ReactComponent as LogoSmall } from "../assets/images/logo-small.svg";
+// @ts-ignore
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter.svg";
+// @ts-ignore
 import { ReactComponent as InstagramIcon } from "../assets/social-icons/instagram.svg";
+// @ts-ignore
 import { ReactComponent as FacebookIcon } from "../assets/social-icons/facebook.svg";
 
 export const Header = () => (

@@ -6,6 +6,7 @@ import { getQuizContent } from "../data/quiz-content";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { AmplitudeEvent, logAmplitudeEventWithData } from "./Amplitude";
 
 type QuestionProps = {
   questionNumber: number;
@@ -99,7 +100,15 @@ export const Question: React.FC<QuestionProps> = ({
                 )}
                 key={stationID}
                 disabled={!!userGuess && stationID !== userGuess}
-                onClick={() => handleGuess(stationID, true)}
+                onClick={() => {
+                  handleGuess(stationID, true);
+                  logAmplitudeEventWithData(
+                    `answerQuestion${questionNumber}` as AmplitudeEvent,
+                    {
+                      gotQuestionRight: stationID === correctAnswer,
+                    }
+                  );
+                }}
               >
                 <p className="mr-2">{station.name}</p>{" "}
                 <ColoredLineIcons trains={station.trains} />

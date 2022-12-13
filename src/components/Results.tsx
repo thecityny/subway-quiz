@@ -1,12 +1,15 @@
 import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
 import { ColoredLineIcons } from "./Question";
+import { logAmplitudeEvent, logAmplitudeEventWithData } from "./Amplitude";
+
 import classnames from "classnames";
 
 // @ts-ignorets-ignore
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-white.svg";
 // @ts-ignorets-ignore
 import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
+import { useEffect, useState } from "react";
 
 const resultsText = [
   "As our mayor once said: Go back to Ohio.",
@@ -25,16 +28,27 @@ const resultsText = [
 export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
   scorecard,
 }) => {
-  let score = 0;
-  let resultsInEmojis = "";
-  scorecard.forEach((answer) => {
-    if (answer.usersGuess === answer.correctAnswer) {
-      score++;
-      resultsInEmojis = resultsInEmojis + "✅";
-    } else {
-      resultsInEmojis = resultsInEmojis + "❌";
-    }
-  });
+  const [score, setScore] = useState(0);
+  const [resultsInEmojis, setResultsInEmojis] = useState("");
+
+  useEffect(() => {
+    let score = 0;
+    let resultsInEmojis = "";
+    scorecard.forEach((answer) => {
+      if (answer.usersGuess === answer.correctAnswer) {
+        score++;
+        resultsInEmojis = resultsInEmojis + "✅";
+      } else {
+        resultsInEmojis = resultsInEmojis + "❌";
+      }
+    });
+    setScore(score);
+    setResultsInEmojis(resultsInEmojis);
+    logAmplitudeEventWithData("finishedQuiz", {
+      finalScore: score,
+    });
+    // eslint-disable-next-line
+  }, []);
 
   const linkToTweet = encodeURI(
     `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/11 ${resultsInEmojis} ${window.location.href}`
@@ -69,6 +83,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="button is-twitter"
+              onClick={() => {
+                logAmplitudeEvent("tweetScore");
+              }}
             >
               Tweet my score
               <span className="icon ml-1 p-1">
@@ -80,6 +97,9 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               target="_blank"
               rel="noopener noreferrer"
               className="button is-dark"
+              onClick={() => {
+                logAmplitudeEvent("emailScore");
+              }}
             >
               Email my score
               <span className="icon ml-1 p-1">
@@ -90,6 +110,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
               className="button is-restart"
               onClick={() => {
                 resetSavedScore();
+                logAmplitudeEvent("takeQuizAgain");
                 window.location.reload();
                 window.scrollTo(0, 0);
               }}

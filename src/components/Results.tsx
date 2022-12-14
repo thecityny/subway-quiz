@@ -12,16 +12,16 @@ import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.
 import { useEffect, useState } from "react";
 
 const resultsText = [
-  "You know this was about the mass transit system, not the sandwich chain, right?",
-  "There’s no Metrocard in your wallet, is there?",
-  "The New Jersey Transit is not the subway.",
-  "Transfer… to another city.",
-  "Maybe take the ferry instead.",
-  "Welcome to New York City.",
-  "The MTA thanks you for riding.",
-  "Good Service",
-  "Your train car lines up to the right exit, every time.",
-  "You’re in a New York State of mind.",
+  "Stand clear of the closing doors, please.",
+  "Stand clear of the closing doors, please.",
+  "Stand clear of the closing doors, please.",
+  "You are being momentarily held by a signal error.",
+  "You are being momentarily held by a signal error.",
+  "You are being momentarily held by a signal error.",
+  "You’re in a New York State of Mind.",
+  "You’re in a New York State of Mind.",
+  "All signals are green, service is good.",
+  "All signals are green, service is good.",
   "Congratulations! You know as much about the subway as THE CITY’s transit reporter, Jose Martinez.",
 ];
 

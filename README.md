@@ -1,8 +1,8 @@
 # Name that Subway Station Quiz: a News Apps by THE CITY
 
-[Check it out live](https://projects.thecity.nyc/nyc-subway-quiz/)
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+[Check it out live](https://projects.thecity.nyc/nyc-subway-quiz/)
 
 ## Available Scripts
 

@@ -60,7 +60,7 @@ export const App = () => {
           <Animation />
           <div className="hero-body">
             <div className="copy-container has-text-centered">
-              <h1 className="title">Name that NYC Subway Station</h1>
+              <h1 className="title">Name That NYC Subway Station</h1>
               <p className="subtitle mb-6">
                 Do you know the subway system as well as THE CITY’s transit
                 reporter?

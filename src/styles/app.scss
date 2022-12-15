@@ -245,6 +245,9 @@ footer .footer {
       }
       &.is-11 {
         padding: 5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
 

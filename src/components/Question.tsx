@@ -205,7 +205,7 @@ export const Question: React.FC<QuestionProps> = ({
             )}
           >
             {questionNumber > getQuizContent().length - 1
-              ? "See Results"
+              ? "See results"
               : "Next ↓"}
           </AnchorLink>
         </div>

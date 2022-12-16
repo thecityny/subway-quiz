@@ -137,7 +137,7 @@ export const App = () => {
                     href={`#q${questionsLeftToAnswer[0]}`}
                     className="button is-dark mt-4"
                   >
-                    Go Back
+                    Go back
                   </AnchorLink>
                 </div>
               ) : (

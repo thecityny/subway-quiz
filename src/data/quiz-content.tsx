@@ -10,9 +10,7 @@ export type QuestionContent = {
 export const getQuizContent: () => QuestionContent[] = () => [
   {
     photo: require("../assets/images/q1.jpg"),
-    caption: (
-      <>At what major Brooklyn transfer hub can you find these stylish signs?</>
-    ),
+    caption: <>At what major Brooklyn hub can you find these stylish signs?</>,
     correctAnswer: 636,
     otherChoices: [175, 621, 620],
   },
@@ -20,7 +18,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q2.jpg"),
     caption: (
       <>
-        At which Manhattan subway hub can you find Sol LeWitt’s “Whirls and
+        At which Manhattan subway station can you find Sol LeWitt’s “Whirls and
         Twirls”?
       </>
     ),

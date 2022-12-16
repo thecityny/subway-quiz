@@ -114,7 +114,7 @@ export const App = () => {
               {questionsLeftToAnswer.length > 0 ? (
                 <div className="has-text-centered">
                   <p className="subtitle mb-2">
-                    Oops! You're not finished with the quiz yet...
+                    Oops! You're not finished with the quiz yet!
                   </p>
                   <p className="subtitle">
                     Please go back and answer{" "}
@@ -131,6 +131,7 @@ export const App = () => {
                         question <b>{questionsLeftToAnswer}</b>
                       </>
                     )}
+                    .
                   </p>
                   <AnchorLink
                     href={`#q${questionsLeftToAnswer[0]}`}

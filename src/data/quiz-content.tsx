@@ -21,7 +21,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
     caption: (
       <>
         At which Manhattan subway hub can you find Sol LeWitt’s “Whirls and
-        twirls”?
+        Twirls”?
       </>
     ),
     correctAnswer: 614,
@@ -32,7 +32,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
     caption: (
       <>
         Which Manhattan station has these tiles, one color of which matches the
-        trains that pass through it?
+        trains that pass through?
       </>
     ),
     correctAnswer: 609,
@@ -74,8 +74,8 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q7.jpg"),
     caption: (
       <>
-        This train yard is right next to a sports stadium. Which is the closest
-        station?
+        This train yard is right next to a sports stadium. What is the closest
+        subway station?
       </>
     ),
     correctAnswer: 448,
@@ -85,8 +85,8 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q8.jpg"),
     caption: (
       <>
-        At this fully above-ground station in Queens, you can transfer between
-        three different trains. Which subway stop is this?
+        At this fully aboveground station in Queens, you can transfer between
+        three trains. Which subway stop is this?
       </>
     ),
     correctAnswer: 461,
@@ -96,8 +96,9 @@ export const getQuizContent: () => QuestionContent[] = () => [
     photo: require("../assets/images/q9.jpg"),
     caption: (
       <>
-        One of the few subway stops located at ground level, in a borough almost
-        entirely made up of underground stations. Which one is this?
+        This is one of the few subway stops located inside at ground level in a
+        borough made up almost entirely of underground stations. What’s its
+        name?
       </>
     ),
     correctAnswer: 436,
@@ -105,7 +106,7 @@ export const getQuizContent: () => QuestionContent[] = () => [
   },
   {
     photo: require("../assets/images/q10.jpg"),
-    caption: <>In which station can you find this Bitcoin machine?</>,
+    caption: <>In which station can you find this bitcoin machine?</>,
     correctAnswer: 334,
     otherChoices: [413, 223, 283],
   },

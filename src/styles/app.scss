@@ -240,6 +240,24 @@ footer .footer {
             width: 25px;
             height: 25px;
             border: 3px solid $mta-black;
+            top: 25%;
+          }
+
+          &.is-first-question {
+            background: linear-gradient(
+              180deg,
+              rgba(251, 242, 227, 1) 0%,
+              rgba(251, 242, 227, 1) 30%,
+              rgba(7, 174, 209, 1) 30%,
+              rgba(7, 174, 209, 1) 100%
+            );
+          }
+          &.is-last-question {
+            height: 32%;
+            .subway-station {
+              top: 100%;
+              bottom: 0;
+            }
           }
         }
       }
@@ -247,7 +265,11 @@ footer .footer {
         padding: 5rem 1.5rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+
+        .lazy-load-image-background {
+          min-height: 230px;
+        }
       }
     }
 

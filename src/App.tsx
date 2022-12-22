@@ -44,6 +44,21 @@ export const App = () => {
 
   const byline = JSON.parse(process.env.REACT_APP_AUTHOR as string) as Author[];
 
+  const getDateUpdated = () => {
+    const timestamp = process.env.REACT_APP_PUB_DATE;
+    if (!timestamp) {
+      throw new Error("No publication date defined in .env file!");
+    } else {
+      const date = new Date(timestamp.replace(/-/g, "/"));
+      const dateFormatted = date.toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      return dateFormatted;
+    }
+  };
+
   const questionsLeftToAnswer = scorecard
     .filter((answerKey) => answerKey.usersGuess === 0)
     .map((answerKey) => answerKey.questionNumber);
@@ -148,8 +163,8 @@ export const App = () => {
         </div>
         <div className="copy-container has-text-centered">
           <p className="copy credit-box">
-            This project was designed and developed by THE CITY. The project
-            code is open source and available to the public{" "}
+            Originally published {getDateUpdated()}. The project code is open
+            source and available to the public{" "}
             <a
               href="https://github.com/thecityny/subway-quiz"
               target="_blank"

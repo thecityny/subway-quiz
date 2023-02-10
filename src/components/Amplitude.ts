@@ -17,7 +17,8 @@ export type AmplitudeEvent =
   | "finishedQuiz"
   | "tweetScore"
   | "emailScore"
-  | "takeQuizAgain";
+  | "takeQuizAgain"
+  | "seeOtherQuizzes";
 
 type AmplitudeEventData = {
   gotQuestionRight?: boolean;

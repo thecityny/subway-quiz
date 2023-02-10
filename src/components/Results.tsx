@@ -117,6 +117,20 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
             >
               Take it again <span className="icon-text ml-2">↺</span>
             </button>
+            <a
+              className="button is-restart"
+              href="https://www.thecity.nyc/quiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                logAmplitudeEvent("seeOtherQuizzes");
+              }}
+            >
+              See other quizzes{" "}
+              <span className="icon-text ml-2 has-text-weight-normal is-size-5">
+                ↗
+              </span>
+            </a>
           </div>
         </div>
         <div className="column is-2 is-underlined">

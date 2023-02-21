@@ -1,6 +1,6 @@
 import { AnswerKey } from "../App";
 import { getStationFromId } from "../data/stations";
-import { ColoredLineIcons } from "./Question";
+import { ColoredLineIcons } from "./StationChoices";
 import { logAmplitudeEvent, logAmplitudeEventWithData } from "./Amplitude";
 
 import classnames from "classnames";
@@ -11,6 +11,7 @@ import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-wh
 import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
 import { useEffect, useState } from "react";
 
+// make this into a prop
 const resultsText = [
   "Stand clear of the closing doors, please.",
   "Stand clear of the closing doors, please.",

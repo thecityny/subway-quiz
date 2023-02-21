@@ -97,17 +97,14 @@ export const App = () => {
           </div>
           <AnchorLink
             href={
-              firstEmptyQuestion
-                ? `#q${firstEmptyQuestion.questionNumber}`
-                : "#scorecard"
+              firstEmptyQuestion ? `#q${firstEmptyQuestion.questionNumber}` : "#scorecard"
             }
             className="start-button is-flex is-align-items-center is-justify-content-center"
           >
             {questionsLeftToAnswer.length === blankScorecard.length
-              ? "Start"
-              : !!firstEmptyQuestion
-              ? "Resume"
-              : "Results"}
+              ? "Start" : !!firstEmptyQuestion
+              ? "Resume": "Results"
+              }
             <br />↓
           </AnchorLink>
         </div>

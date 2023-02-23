@@ -1,7 +1,7 @@
-import { AnswerKey } from "../App";
+import { AnswerKey } from "./Quiz";
 import { getStationFromId } from "../data/stations";
-import { ColoredLineIcons } from "./StationChoices";
-import { logAmplitudeEvent, logAmplitudeEventWithData } from "./Amplitude";
+import { SubwayStationIcon } from "./SubwayStationIcon";
+import { logAmplitudeEvent, logAmplitudeEventWithData } from "../utils/Amplitude";
 
 import classnames from "classnames";
 
@@ -181,7 +181,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 {!!usersStation ? (
                   <p>
                     {usersStation.name}{" "}
-                    <ColoredLineIcons trains={usersStation.trains} />
+                    <SubwayStationIcon trains={usersStation.trains} />
                   </p>
                 ) : (
                   <p>Unknown</p>
@@ -201,7 +201,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                 {!!correctStation ? (
                   <p>
                     {correctStation.name}{" "}
-                    <ColoredLineIcons trains={correctStation.trains} />
+                    <SubwayStationIcon trains={correctStation.trains} />
                   </p>
                 ) : (
                   <p>Unknown</p>

@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import classnames from "classnames";
-import { getQuizContent } from "../data/quiz-content";
-import AnchorLink from "react-anchor-link-smooth-scroll";
-import StationChoices from "./StationChoices";
-import NextButton from "./NextButton";
-import QuestionNotMobile from "./QuestionNotMobile";
-import QuestionMobile from "./QuestionMobile";
+import QuestionNotMobile from "./QuestionNotMobileView";
+import QuestionMobile from "./QuestionMobileView";
+import { shuffleArray } from "utils/shuffleArray";
+import { QuestionContent } from "data/quiz-content";
 
 import "react-lazy-load-image-component/src/effects/blur.css";
 
@@ -14,24 +10,16 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 type QuestionProps = {
   questionNumber: number;
   submitGuess: (a: number, qn: number) => void;
-};
-
-// make this into a utility function
-const shuffleArray = (array: any[]) => {
-  let newArray = array;
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [array[j], array[i]];
-  }
-  return newArray;
+  getFunction: () => QuestionContent[];
 };
 
 export const Question: React.FC<QuestionProps> = ({
   questionNumber,
   submitGuess,
+  getFunction
 }) => {
   const { photo, caption, correctAnswer, otherChoices } =
-    getQuizContent()[questionNumber - 1];
+    getFunction()[questionNumber - 1];
 
   const [userGuess, setUserGuess] = useState(0);
 
@@ -43,14 +31,14 @@ export const Question: React.FC<QuestionProps> = ({
     }
   };
 
-  const [choicesList, setChoicesList] = useState([
+  const [answerOptions, setAnswerOptions] = useState([
     correctAnswer,
     ...otherChoices,
   ]);
 
   // Shuffle choices on first render:
   useEffect(() => {
-    setChoicesList(shuffleArray([correctAnswer, ...otherChoices]));
+    setAnswerOptions(shuffleArray([correctAnswer, ...otherChoices]));
 
     if (!!localStorage.getItem(`stationGuess-${questionNumber}`)) {
       const stationID = parseInt(
@@ -66,20 +54,22 @@ export const Question: React.FC<QuestionProps> = ({
     <QuestionNotMobile
       userGuess={userGuess}
       correctAnswer={correctAnswer}
-      choicesList={choicesList}
+      answerOptions={answerOptions}
       handleGuess={handleGuess}
       questionNumber={questionNumber}
       photo={photo}
-      caption={caption}   
+      caption={caption}
+      getFunction={getFunction}   
     />
     <QuestionMobile
       userGuess={userGuess}
       correctAnswer={correctAnswer}
-      choicesList={choicesList}
+      answerOptions={answerOptions}
       handleGuess={handleGuess}
       questionNumber={questionNumber}
       photo={photo}
-      caption={caption}         
+      caption={caption}
+      getFunction={getFunction}         
     />
     </div>
   );

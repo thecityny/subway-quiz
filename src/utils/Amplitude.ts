@@ -27,6 +27,7 @@ type AmplitudeEventData = {
 
 const logAmplitudeEvent = (e: AmplitudeEvent) =>
   amplitude.getInstance().logEvent(e);
+  
 const logAmplitudeEventWithData = (
   e: AmplitudeEvent,
   data: AmplitudeEventData

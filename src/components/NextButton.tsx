@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import classnames from "classnames";
-import { getQuizContent } from "../data/quiz-content";
+import { QuestionContent } from "data/quiz-content";
 
 type NextButtonProps = {
     userGuess: number;
     questionNumber: number;
+    getFunction: () => QuestionContent[];
   };
 
-const NextButton: React.FC<NextButtonProps> = ({userGuess, questionNumber}) => {
+const NextButton: React.FC<NextButtonProps> = ({userGuess, questionNumber, getFunction}) => {
     return(
         <AnchorLink
             href={
-            questionNumber > getQuizContent().length - 1
+            questionNumber > getFunction().length - 1
                 ? "#scorecard"
                 : `#q${questionNumber + 1}`
             }
@@ -23,7 +24,7 @@ const NextButton: React.FC<NextButtonProps> = ({userGuess, questionNumber}) => {
             !userGuess && "is-invisible"
             )}
         >
-            {questionNumber > getQuizContent().length - 1
+            {questionNumber > getFunction().length - 1
             ? "See results"
             : "Next ↓"}
         </AnchorLink>

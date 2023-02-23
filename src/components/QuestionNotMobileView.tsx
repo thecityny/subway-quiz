@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from "react";
-import StationChoices from "./StationChoices";
+import StationChoices from "./AnswerOptions";
 import NextButton from "./NextButton";
 import classnames from "classnames";
-import { LazyLoadImage } from "react-lazy-load-image-component"; 
-import { getQuizContent } from "../data/quiz-content";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { QuestionContent } from "data/quiz-content";
 
 type QuestionNotMobileProps = {
     userGuess: number;
     correctAnswer: number;
-    choicesList: number[];
+    answerOptions: number[];
     handleGuess: (stationID: number, setLocalStorage?: boolean) => void;
     questionNumber: number;
     photo: string;
     caption: React.ReactNode;
+    getFunction: () => QuestionContent[];
   };
 
 
 const QuestionNotMobile: React.FC<QuestionNotMobileProps> = ({
     userGuess, 
     correctAnswer, 
-    choicesList, 
+    answerOptions, 
     handleGuess,
     questionNumber,
     photo,
-    caption}) => {
+    caption,
+    getFunction
+  }) => {
 
+        // need to fix this
         const piece = 
         <div className="column is-1">
         <div
@@ -36,7 +40,7 @@ const QuestionNotMobile: React.FC<QuestionNotMobileProps> = ({
             "is-justify-content-center",
             questionNumber === 1
               ? "is-first-question"
-              : questionNumber > getQuizContent().length - 1 &&
+              : questionNumber > getFunction().length - 1 &&
                   "is-last-question"
           )}
         >
@@ -55,13 +59,14 @@ const QuestionNotMobile: React.FC<QuestionNotMobileProps> = ({
             <StationChoices 
                 userGuess={userGuess}
                 correctAnswer={correctAnswer}
-                choicesList={choicesList}
+                answerOptions={answerOptions}
                 handleGuess={handleGuess}
                 questionNumber={questionNumber}
             />
             <NextButton
                 questionNumber = {questionNumber}
                 userGuess={userGuess}
+                getFunction={getFunction}
             />
             </div>
         </div>

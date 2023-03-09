@@ -5,10 +5,11 @@ import { AnswerKey } from "./Quiz";
 
 type ScorecardProps = {
     scorecard: AnswerKey[];
-    questionsLeftToAnswer: number[]
+    questionsLeftToAnswer: number[];
+    title: string;
   };
 
-const Scorecard: React.FC<ScorecardProps> = ({questionsLeftToAnswer, scorecard}) => {
+const Scorecard: React.FC<ScorecardProps> = ({questionsLeftToAnswer, scorecard, title}) => {
     return(
         <div className="hero is-fullheight" id="scorecard">
           <div className="hero-body">
@@ -44,7 +45,7 @@ const Scorecard: React.FC<ScorecardProps> = ({questionsLeftToAnswer, scorecard})
                   </AnchorLink>
                 </div>
               ) : (
-                <Results scorecard={scorecard} />
+                <Results scorecard={scorecard} title = {title} />
               )}
             </div>
           </div>

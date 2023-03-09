@@ -1,6 +1,6 @@
+import React from "react"
 import { AnswerKey } from "./Quiz";
 import { getStationFromId } from "../data/stations";
-import { SubwayStationIcon } from "./SubwayStationIcon";
 import { logAmplitudeEvent, logAmplitudeEventWithData } from "../utils/Amplitude";
 
 import classnames from "classnames";
@@ -10,24 +10,13 @@ import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-wh
 // @ts-ignorets-ignore
 import { ReactComponent as EmailIcon } from "../assets/social-icons/email-white.svg";
 import { useEffect, useState } from "react";
+// import { MyContext } from "../App"
+import { getResultsText } from "data/quiz-content";
 
-// make this into a prop
-const resultsText = [
-  "Stand clear of the closing doors, please.",
-  "Stand clear of the closing doors, please.",
-  "Stand clear of the closing doors, please.",
-  "You are being momentarily held by a signal error.",
-  "You are being momentarily held by a signal error.",
-  "You are being momentarily held by a signal error.",
-  "You’re in a New York State of Mind.",
-  "You’re in a New York State of Mind.",
-  "All signals are green, service is good.",
-  "All signals are green, service is good.",
-  "Congratulations! You know as much about the subway as THE CITY’s transit reporter, Jose Martinez.",
-];
+const resultsText = getResultsText()
 
-export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
-  scorecard,
+export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
+  scorecard, title
 }) => {
   const [score, setScore] = useState(0);
   const [resultsInEmojis, setResultsInEmojis] = useState("");
@@ -51,14 +40,18 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
     // eslint-disable-next-line
   }, []);
 
+  // const { stationIcons : SubwayStationIcon } = React.useContext(MyContext)
+  
+  // make these links into props
   const linkToTweet = encodeURI(
-    `https://twitter.com/intent/tweet?text=Quiz: Name that Subway Station | My score: ${score}/10 ${resultsInEmojis} ${window.location.href}`
+    `https://twitter.com/intent/tweet?text=Quiz: ${title} | My score: ${score}/10 ${resultsInEmojis} ${window.location.href}`
   );
 
+  // this one too
   const linkToEmail = encodeURI(
-    `mailto:?subject=I scored ${score}/10 on THE CITY's Name that Subway Station Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
+    `mailto:?subject=I scored ${score}/10 on THE CITY's ${title} Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
   );
-
+  // local storage variable names need to be changed
   const resetSavedScore = () => {
     scorecard.forEach((answer) => {
       localStorage.removeItem(`stationGuess-${answer.questionNumber}`);
@@ -143,6 +136,8 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
         <div className="column is-5 pr-0 is-underlined ">
           <p>Correct answer</p>
         </div>
+
+        {/* figure something out with these variables */}
         {scorecard.map((answer, i) => {
           const usersStation = getStationFromId(answer.usersGuess);
           const correctStation = getStationFromId(answer.correctAnswer);
@@ -178,10 +173,10 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                     : "has-text-weight-light"
                 )}
               >
-                {!!usersStation ? (
+                {usersStation ? (
                   <p>
                     {usersStation.name}{" "}
-                    <SubwayStationIcon trains={usersStation.trains} />
+                    {/* <SubwayStationIcon trains={usersStation.trains} /> */}
                   </p>
                 ) : (
                   <p>Unknown</p>
@@ -198,10 +193,10 @@ export const Results: React.FC<{ scorecard: AnswerKey[] }> = ({
                     : "has-text-weight-light"
                 )}
               >
-                {!!correctStation ? (
+                {correctStation ? (
                   <p>
                     {correctStation.name}{" "}
-                    <SubwayStationIcon trains={correctStation.trains} />
+                    {/* <SubwayStationIcon trains={correctStation.trains} /> */}
                   </p>
                 ) : (
                   <p>Unknown</p>

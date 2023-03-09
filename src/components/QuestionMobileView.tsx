@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import StationChoices from "./AnswerOptions";
+import AnswerOptions from "./AnswerOptions";
 import NextButton from "./NextButton";
 import classnames from "classnames";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -55,7 +55,7 @@ const QuestionMobile: React.FC<QuestionMobileProps> = ({
       <LazyLoadImage src={photo} width="100%" effect="blur" />
       <h1 className="mt-4 mb-0">#{questionNumber}</h1>
       <h2 className="has-text-weight-bold mb-4">{caption}</h2>
-      <StationChoices 
+      <AnswerOptions 
         userGuess={userGuess}
         correctAnswer={correctAnswer}
         answerOptions={answerOptions}

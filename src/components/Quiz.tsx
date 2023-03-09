@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { Question } from "./Question";
 import { Footer, Header } from "components/HeaderFooter";
 import { getDateUpdated } from "utils/getDateUpdated";
@@ -6,14 +6,12 @@ import Byline from "./Byline";
 import Title from "components/Title";
 import StartResumeResultsButton from "./StartResumeResultsButton"
 import { QuestionContent } from "../data/quiz-content";
-
-// @ts-ignorets-ignore
-import { ReactComponent as Animation } from "../assets/images/lines-animation.svg";
+import { Train } from "../data/stations";
 
 import "../styles/app.scss";
 import Scorecard from "components/Scorecard";
 
-// in reference to the subway quiz, userGuess refers to the station ID number 
+// in reference to the subway quiz, usersGuess refers to the station ID number 
 export type AnswerKey = {
   questionNumber: number;
   usersGuess: number;
@@ -24,12 +22,13 @@ export type AnswerKey = {
 type QuizProps = {
   title: string;
   subtitle: string;
-  getFunction: () => QuestionContent[]
+  getFunction: () => QuestionContent[];
+  animation?: any;
+  stationIcons?: ReactElement;
 }
-
 // using the scorecard variables/ state hook assumes the data format is the same as the subway quiz's data format (in the quiz-content.tsx file) so if it's not the same will need to change this
 
-export const Quiz: React.FC<QuizProps> = ({title, subtitle, getFunction}) => {
+export const Quiz: React.FC<QuizProps> = ({title, subtitle, getFunction, animation}) => {
   let blankScorecard: AnswerKey[] = getFunction().map(
     ({ correctAnswer }, i) => ({
       questionNumber: i + 1,
@@ -61,13 +60,14 @@ export const Quiz: React.FC<QuizProps> = ({title, subtitle, getFunction}) => {
     (answerKey) => answerKey.usersGuess === 0
   );
 
+
   return (
     <article>
       <Header />
       <div className="app">
         <div className="hero is-fullheight is-relative is-align-items-center">
           {/* need to pass this down from App */}
-          <Animation />
+          { animation }
           <div className="hero-body">
             <div className="copy-container has-text-centered">
               <Title
@@ -99,9 +99,11 @@ export const Quiz: React.FC<QuizProps> = ({title, subtitle, getFunction}) => {
         <Scorecard 
           questionsLeftToAnswer = {questionsLeftToAnswer}
           scorecard = {scorecard}
+          title = {title}
         />
 
         <div className="copy-container has-text-centered">
+          {/* change date in .env file */}
           <p className="copy credit-box">
             Originally published {getDateUpdated()}. The project code is open
             source and available to the public{" "}

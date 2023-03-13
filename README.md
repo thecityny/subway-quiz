@@ -75,7 +75,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 *** This assumes a basic knowledge of javascript. ***
 
-In order to create your own quiz using The City's subway quiz code, you will need to edit the App.tsx, quiz-content.tsx, stations.ts files as well as create a .env file. 
+In order to create your own quiz using The City's subway quiz code, you will need to edit the App.tsx, quiz-content.tsx, stations.ts files as well as the .env file. 
 
 First start by editing the quiz-content.tsx and stations.ts files. You can rename the stations.ts file to be more applicable to your own quiz topic. 
 
@@ -89,12 +89,14 @@ Our quiz only has 10 questions but you can add or subtract as many questions as 
 
 If you want to use our code without having to edit any other files aside from the ones mentioned above, you will need to create a corresponding file, equivalent to stations.ts. When you run the quiz code, the information in stations.ts will show up as the answer options. 
 
-For example, if you have a quiz called Legendary Pizza and you have a question that asks, 'What is the oldest pizza parlor in NYC?'. You will need to give it an id number and in stations.ts give information about that id number (name of pizza restaurant, any other relevant quiz answer info, etc.) For example, in our subway quiz in addition to the name of the subway station the lines for the specific station are relevant so we added that data as well (it shows up in our answer options when you take the quiz) but it's possible that the id for your quiz only needs to refer to one thing such as the pizza parlor name. 
+For example, if you have a quiz called Legendary Pizza and you have a question that asks, 'What is the oldest pizza parlor in NYC?'. You will need to give it an id number and in stations.ts give information about that id number (name of pizza restaurant, any other relevant quiz answer info, etc.) For example, in our subway quiz in addition to the name of the subway station, the lines for the specific station are relevant to our quiz answer options so we added that data as well (it shows up in our answer options when you take the quiz) but it's possible that the id for your quiz only needs to refer to one thing such as the pizza parlor name. 
 
 In quiz-content.tsx you will also need to update the return array of the getResultsText function. The length of the results text array is equivalent to the number of questions. Depending on the number of questions that are correct/incorrect the quiz taker will see one of the statements from the results array in the scorecard that appears at the end of the quiz after all the questions have been answered.
 
-For example, in reference to our own results array, if the quiz-taker had only gotten one question right, at the end of the quiz on the scorecard they would see 'Stand clear of the closing doors, please." 
+For example, in reference to our own results array, if the quiz-taker had only gotten one question right, at the end of the quiz on the scorecard they would see 'Stand clear of the closing doors, please." Which is the 0th item in the array (question #1)
 
 After you have finished creating your own data files (quiz-content.tsx and stations.ts) with your quiz questions and answers, you can move on to editing the App.tsx file. Replace the title and subtitle with your own title and subtitles. If you have an an svg animation you'd like to use you can replace our animation with your own by importing the animation as a react component like we did in line 8 of App.tsx. 
 
 You will also need to replace the SubwayStationIcon with your own icon component if you'd like to have an icon appear next to your answer options. For example, in our quiz next to the name of the subway stations in the answer options, appears each of the subway station line icons for that subway station. If this was a pizza quiz we could replace it with an icon of a pizza. 
+
+Lastly, you will need to update the .env file with the correct values for the unchanging variables which are used in the index.html and a few other places in the code.

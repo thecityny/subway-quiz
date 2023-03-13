@@ -6,14 +6,14 @@ import { QuestionContent } from "data/quiz-content";
 type NextButtonProps = {
     userGuess: number;
     questionNumber: number;
-    getFunction: () => QuestionContent[];
+    getQuizData: () => QuestionContent[];
   };
 
-const NextButton: React.FC<NextButtonProps> = ({userGuess, questionNumber, getFunction}) => {
+const NextButton: React.FC<NextButtonProps> = ({userGuess, questionNumber, getQuizData}) => {
     return(
         <AnchorLink
             href={
-            questionNumber > getFunction().length - 1
+            questionNumber > getQuizData().length - 1
                 ? "#scorecard"
                 : `#q${questionNumber + 1}`
             }
@@ -24,7 +24,7 @@ const NextButton: React.FC<NextButtonProps> = ({userGuess, questionNumber, getFu
             !userGuess && "is-invisible"
             )}
         >
-            {questionNumber > getFunction().length - 1
+            {questionNumber > getQuizData().length - 1
             ? "See results"
             : "Next ↓"}
         </AnchorLink>

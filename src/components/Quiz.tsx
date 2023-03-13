@@ -22,14 +22,14 @@ export type AnswerKey = {
 type QuizProps = {
   title: string;
   subtitle: string;
-  getFunction: () => QuestionContent[];
+  getQuizData: () => QuestionContent[];
   animation?: any;
   stationIcons?: ReactElement;
 }
 // using the scorecard variables/ state hook assumes the data format is the same as the subway quiz's data format (in the quiz-content.tsx file) so if it's not the same will need to change this
 
-export const Quiz: React.FC<QuizProps> = ({title, subtitle, getFunction, animation}) => {
-  let blankScorecard: AnswerKey[] = getFunction().map(
+export const Quiz: React.FC<QuizProps> = ({title, subtitle, getQuizData, animation}) => {
+  let blankScorecard: AnswerKey[] = getQuizData().map(
     ({ correctAnswer }, i) => ({
       questionNumber: i + 1,
       usersGuess: 0,
@@ -91,7 +91,7 @@ export const Quiz: React.FC<QuizProps> = ({title, subtitle, getFunction, animati
               key={questionNumber}
               questionNumber={questionNumber}
               submitGuess={submitGuess}
-              getFunction={getFunction}
+              getQuizData={getQuizData}
             />
           ))}
         </div>

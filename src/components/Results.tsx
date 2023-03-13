@@ -2,7 +2,7 @@ import React from "react"
 import { AnswerKey } from "./Quiz";
 import { getStationFromId } from "../data/stations";
 import { logAmplitudeEvent, logAmplitudeEventWithData } from "../utils/Amplitude";
-
+import { SubwayStationIcon } from "./SubwayStationIcon";
 import classnames from "classnames";
 
 // @ts-ignorets-ignore
@@ -176,7 +176,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
                 {usersStation ? (
                   <p>
                     {usersStation.name}{" "}
-                    {/* <SubwayStationIcon trains={usersStation.trains} /> */}
+                    <SubwayStationIcon trains={usersStation.trains} />
                   </p>
                 ) : (
                   <p>Unknown</p>
@@ -196,7 +196,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
                 {correctStation ? (
                   <p>
                     {correctStation.name}{" "}
-                    {/* <SubwayStationIcon trains={correctStation.trains} /> */}
+                    <SubwayStationIcon trains={correctStation.trains} />
                   </p>
                 ) : (
                   <p>Unknown</p>

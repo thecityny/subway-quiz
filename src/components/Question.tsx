@@ -10,16 +10,16 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 type QuestionProps = {
   questionNumber: number;
   submitGuess: (a: number, qn: number) => void;
-  getFunction: () => QuestionContent[];
+  getQuizData: () => QuestionContent[];
 };
 
 export const Question: React.FC<QuestionProps> = ({
   questionNumber,
   submitGuess,
-  getFunction
+  getQuizData
 }) => {
   const { photo, caption, correctAnswer, otherChoices } =
-    getFunction()[questionNumber - 1];
+    getQuizData()[questionNumber - 1];
 
   const [userGuess, setUserGuess] = useState(0);
 
@@ -59,7 +59,7 @@ export const Question: React.FC<QuestionProps> = ({
       questionNumber={questionNumber}
       photo={photo}
       caption={caption}
-      getFunction={getFunction}   
+      getQuizData={getQuizData}   
     />
     <QuestionMobile
       userGuess={userGuess}
@@ -69,7 +69,7 @@ export const Question: React.FC<QuestionProps> = ({
       questionNumber={questionNumber}
       photo={photo}
       caption={caption}
-      getFunction={getFunction}         
+      getQuizData={getQuizData}         
     />
     </div>
   );

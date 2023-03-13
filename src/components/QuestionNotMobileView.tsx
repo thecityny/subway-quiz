@@ -13,7 +13,7 @@ type QuestionNotMobileProps = {
     questionNumber: number;
     photo: string;
     caption: React.ReactNode;
-    getFunction: () => QuestionContent[];
+    getQuizData: () => QuestionContent[];
   };
 
 
@@ -25,7 +25,7 @@ const QuestionNotMobile: React.FC<QuestionNotMobileProps> = ({
     questionNumber,
     photo,
     caption,
-    getFunction
+    getQuizData
   }) => {
 
         // need to fix this
@@ -40,7 +40,7 @@ const QuestionNotMobile: React.FC<QuestionNotMobileProps> = ({
             "is-justify-content-center",
             questionNumber === 1
               ? "is-first-question"
-              : questionNumber > getFunction().length - 1 &&
+              : questionNumber > getQuizData().length - 1 &&
                   "is-last-question"
           )}
         >
@@ -66,7 +66,7 @@ const QuestionNotMobile: React.FC<QuestionNotMobileProps> = ({
             <NextButton
                 questionNumber = {questionNumber}
                 userGuess={userGuess}
-                getFunction={getFunction}
+                getQuizData={getQuizData}
             />
             </div>
         </div>

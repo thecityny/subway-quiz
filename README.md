@@ -83,7 +83,7 @@ In the quiz-content file, the getQuizContent function returns an array of object
 
 The quiz-code does not rely on a back-end server and all the question data runs client-side. 
 
-In the quiz-content file, replace the array objects' key-value pairs with your own questions, images, answer, and answer options. You can put your desired .jpg images in the src/assets/images file. 
+In the quiz-content file, replace the array objects' key-value pairs with your own questions, images, answer, and answer options. You can put your desired .jpg images in the src/assets/images folder. 
 
 Our quiz only has 10 questions but you can add or subtract as many questions as you like and everything will still render correctly.
 
@@ -95,8 +95,8 @@ In quiz-content.tsx you will also need to update the return array of the getResu
 
 For example, in reference to our own results array, if the quiz-taker had only gotten one question right, at the end of the quiz on the scorecard they would see 'Stand clear of the closing doors, please." Which is the 0th item in the array (question #1)
 
-After you have finished creating your own data files (quiz-content.tsx and stations.ts) with your quiz questions and answers, you can move on to editing the App.tsx file. Replace the title and subtitle with your own title and subtitles. If you have an an svg animation you'd like to use you can replace our animation with your own by importing the animation as a react component like we did in line 8 of App.tsx. 
+After you have finished creating your own data files (quiz-content.tsx and stations.ts) with your quiz questions and answers, you can move on to editing the App.tsx file. Replace the title and subtitle with your own title and subtitles. If you have an an svg animation you'd like to use you can replace our animation with your own by importing the animation as a react component like we did in line 8 of App.tsx. Otherwise just delete that line.
 
 You will also need to replace the SubwayStationIcon with your own icon component if you'd like to have an icon appear next to your answer options. For example, in our quiz next to the name of the subway stations in the answer options, appears each of the subway station line icons for that subway station. If this was a pizza quiz we could replace it with an icon of a pizza. 
 
-Lastly, you will need to update the .env file with the correct values for the unchanging variables which are used in the index.html and a few other places in the code.
+Lastly, you will need to update the .env file with your correct values for the unchanging variables which are used in the index.html and a few other places in the code but only the .env needs to be changed. 

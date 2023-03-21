@@ -7,19 +7,22 @@ export type QuestionContent = {
   otherChoices: number[];
 };
 
+/**
+ * This is the BOOP
+ */
 export const getResultsText = () => 
   [
-    "Stand clear of the closing doors, please.",
-    "Stand clear of the closing doors, please.",
-    "Stand clear of the closing doors, please.",
-    "You are being momentarily held by a signal error.",
-    "You are being momentarily held by a signal error.",
-    "You are being momentarily held by a signal error.",
-    "You’re in a New York State of Mind.",
-    "You’re in a New York State of Mind.",
-    "All signals are green, service is good.",
-    "All signals are green, service is good.",
-    "Congratulations! You know as much about the subway as THE CITY’s transit reporter, Jose Martinez.",
+    "Stand clear of the closing doors, please.", // Score: 0/10
+    "Stand clear of the closing doors, please.", // Score: 1/10
+    "Stand clear of the closing doors, please.", // Score: 2/10
+    "You are being momentarily held by a signal error.", // Score: 3/10
+    "You are being momentarily held by a signal error.", // Score: 4/10
+    "You are being momentarily held by a signal error.", // Score: 5/10
+    "You’re in a New York State of Mind.", // Score: 6/10
+    "You’re in a New York State of Mind.", // Score: 7/10
+    "All signals are green, service is good.", // Score: 8/10
+    "All signals are green, service is good.", // Score: 9/10
+    "Congratulations! You know as much about the subway as THE CITY’s transit reporter, Jose Martinez.", // Score: 10/10
   ];
 ;
 

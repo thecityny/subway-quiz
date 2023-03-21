@@ -1,10 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import { AnswerKey } from "./Quiz";
-import { getStationFromId } from "../data/stations";
 import { logAmplitudeEvent, logAmplitudeEventWithData } from "../utils/Amplitude";
-import { SubwayStationIcon } from "./SubwayStationIcon";
 import classnames from "classnames";
-
+import { MyContext, MyContextType } from "App";
 // @ts-ignorets-ignore
 import { ReactComponent as TwitterIcon } from "../assets/social-icons/twitter-white.svg";
 // @ts-ignorets-ignore
@@ -18,6 +16,8 @@ const resultsText = getResultsText()
 export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
   scorecard, title
 }) => {
+  const { matchIdToName } = useContext(MyContext) as MyContextType
+  const { createIcons } = useContext(MyContext) as MyContextType
   const [score, setScore] = useState(0);
   const [resultsInEmojis, setResultsInEmojis] = useState("");
 
@@ -39,15 +39,11 @@ export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
     });
     // eslint-disable-next-line
   }, []);
-
-  // const { stationIcons : SubwayStationIcon } = React.useContext(MyContext)
   
-  // make these links into props
   const linkToTweet = encodeURI(
     `https://twitter.com/intent/tweet?text=Quiz: ${title} | My score: ${score}/10 ${resultsInEmojis} ${window.location.href}`
   );
 
-  // this one too
   const linkToEmail = encodeURI(
     `mailto:?subject=I scored ${score}/10 on THE CITY's ${title} Quiz &body=My results: ${resultsInEmojis}. Check it out here: ${window.location.href}`
   );
@@ -139,8 +135,8 @@ export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
 
         {/* figure something out with these variables */}
         {scorecard.map((answer, i) => {
-          const usersStation = getStationFromId(answer.usersGuess);
-          const correctStation = getStationFromId(answer.correctAnswer);
+          const usersStation = matchIdToName(answer.usersGuess);
+          const correctStation = matchIdToName(answer.correctAnswer);
           const gotAnswerCorrect = usersStation === correctStation;
 
           return (
@@ -176,7 +172,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
                 {usersStation ? (
                   <p>
                     {usersStation.name}{" "}
-                    <SubwayStationIcon trains={usersStation.trains} />
+                    {createIcons(usersStation.trains)}
                   </p>
                 ) : (
                   <p>Unknown</p>
@@ -196,7 +192,7 @@ export const Results: React.FC<{ scorecard: AnswerKey[], title: string }> = ({
                 {correctStation ? (
                   <p>
                     {correctStation.name}{" "}
-                    <SubwayStationIcon trains={correctStation.trains} />
+                    {createIcons(correctStation.trains)}
                   </p>
                 ) : (
                   <p>Unknown</p>

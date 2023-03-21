@@ -1,13 +1,10 @@
 import React, { ReactElement, useState } from "react";
 import { Question } from "./Question";
-import { Footer, Header } from "components/HeaderFooter";
 import { getDateUpdated } from "utils/getDateUpdated";
 import Byline from "./Byline";
 import Title from "components/Title";
 import StartResumeResultsButton from "./StartResumeResultsButton"
 import { QuestionContent } from "../data/quiz-content";
-import { Train } from "../data/stations";
-
 import "../styles/app.scss";
 import Scorecard from "components/Scorecard";
 
@@ -21,14 +18,15 @@ export type AnswerKey = {
 // can actually just use the same props as TitleProps for this, DRY
 type QuizProps = {
   title: string;
-  subtitle: string;
+  subtitle: string 
   getQuizData: () => QuestionContent[];
-  animation?: any;
-  stationIcons?: ReactElement;
+  animation?: ReactElement;
+  footer?: ReactElement;
+  header?: ReactElement;
 }
 // using the scorecard variables/ state hook assumes the data format is the same as the subway quiz's data format (in the quiz-content.tsx file) so if it's not the same will need to change this
 
-export const Quiz: React.FC<QuizProps> = ({title, subtitle, getQuizData, animation}) => {
+export const Quiz: React.FC<QuizProps> = ({header, footer, title, subtitle, getQuizData, animation}) => {
   let blankScorecard: AnswerKey[] = getQuizData().map(
     ({ correctAnswer }, i) => ({
       questionNumber: i + 1,
@@ -63,7 +61,7 @@ export const Quiz: React.FC<QuizProps> = ({title, subtitle, getQuizData, animati
 
   return (
     <article>
-      <Header />
+      { header }
       <div className="app">
         <div className="hero is-fullheight is-relative is-align-items-center">
           {/* need to pass this down from App */}
@@ -118,7 +116,7 @@ export const Quiz: React.FC<QuizProps> = ({title, subtitle, getQuizData, animati
           </p>
         </div>
       </div>
-      <Footer />
+      { footer }
     </article>
   );
 };

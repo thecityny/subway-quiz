@@ -1,10 +1,9 @@
 import React from "react";
 import { AmplitudeEvent, logAmplitudeEventWithData } from "../utils/Amplitude";
-import { getStationFromId, Train } from "../data/stations";
 import classnames from "classnames";
-import { SubwayStationIcon } from "./SubwayStationIcon";
 import YourGuess from "./YourGuess";
-
+import { useContext } from "react";
+import { MyContext, MyContextType } from "App";
 
   type AnswerOptionsProps = {
     userGuess: number;
@@ -22,6 +21,9 @@ const AnswerOptions: React.FC<AnswerOptionsProps> = ({
     handleGuess,
     questionNumber
 }) => {
+    const { matchIdToName } = useContext(MyContext) as MyContextType
+    const { createIcons } = useContext(MyContext) as MyContextType
+
     return(
     <>
       <YourGuess
@@ -33,7 +35,7 @@ const AnswerOptions: React.FC<AnswerOptionsProps> = ({
         {answerOptions.map((option) => {
           // Station is an obj and option is an id of a specific station
           // need to make this not subway specific
-          const station = getStationFromId(option);
+          const station = matchIdToName(option);
           return (
             station && (
               <button
@@ -62,7 +64,7 @@ const AnswerOptions: React.FC<AnswerOptionsProps> = ({
               >
                 {/* need to change this as well */}
                 <p className="mr-2">{station.name}</p>{" "}
-                <SubwayStationIcon trains={station.trains} />
+                {createIcons(station.trains)}
               </button>
             )
           );

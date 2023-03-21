@@ -4,6 +4,7 @@ export type Borough = "M" | "Bx" | "Bk" | "Q" | "SI";
 
 export const MTA_BOROUGHS: Borough[] = ["M", "Bx", "Bk", "Q", "SI"];
 
+// this function is unused... 
 export const getFullBoroughName = (b: Borough) =>
   b === "M"
     ? "Manhattan"
@@ -72,6 +73,7 @@ export const MTA_TRAINS: Train[] = [
   "SIR",
 ];
 
+// I don't think this function is being used anywhere either...
 export function getTrainsForBorough(b: Borough): Train[] {
   return b === "M"
     ? [
@@ -138,6 +140,7 @@ export type Station = {
   borough: Borough;
 };
 
+// rename this function to be relevant to your quiz
 export const getStationFromId = (id: number) =>
   MTA_STATIONS.find((station) => station.id === id);
 

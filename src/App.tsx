@@ -13,6 +13,8 @@ import { Footer } from "components/HeaderFooter";
 // There are too many question components... need to synthesize 
 
 // index.html code 
+// take out amplitude stuff if not THE CITY
+// other things that are CITY specific
 
 // change byline names in the .env file 
 
@@ -44,7 +46,7 @@ export const App = () => {
   return (
     <MyContext.Provider value = {{createIcons, matchIdToName}}>
       <Quiz 
-        title = 'LEGENDARY PIZZA'
+        title = 'Our Quiz'
         subtitle = 'Do you know the subway system as well as THE CITY’s transit reporter?'
         getQuizData = { getQuizContent }
         // animation, header, and footer are optional, if you don't have your own components for these then just erase the property name and assigned variable

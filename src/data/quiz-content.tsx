@@ -7,9 +7,6 @@ export type QuestionContent = {
   otherChoices: number[];
 };
 
-/**
- * This is the BOOP
- */
 export const getResultsText = () => 
   [
     "Stand clear of the closing doors, please.", // Score: 0/10

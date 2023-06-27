@@ -8,21 +8,15 @@ A quiz that tests New Yorkers' knowledge of the City's subway! Originally publis
 
 ## 🚀 Getting started
 
-The first step is to click GitHub’s “use this template” button to a make a copy of the repository for yourself.
-
-![](./.github/images/use-this-template.png)
-
-You’ll be asked to provide a slug for your project. Once that’s done, a new repository will be available at `https://github.com/your-username/your-slug`.
-
-Next you’ll need to clone it down to your computer to work with the code.
+First you’ll need to clone this repository down to your computer to work with the code.
 
 Open up your terminal and cd to your code folder. Clone the project into your folder. This will copy the project onto your computer.
 
 ```sh
-gh repo clone https://github.com/your-username/your-slug
+gh repo clone https://github.com/thecityny/subway-quiz
 ```
 
-Once the repository has finished downloading, cd into your-slug and install the Node.js dependencies.
+Once the repository has finished downloading, cd into it and install the Node.js dependencies.
 
 ```sh
 npm install
@@ -34,17 +28,17 @@ Once the dependencies have been installed, you’re ready to preview the project
 npm start
 ```
 
-Now go to `localhost:3000` in your browser. You should see a boilerplate page ready for your customizations.
+Now go to `localhost:3000` in your browser. You should see a app ready for your customizations.
 
-## Using this template
+## Using this code
 
 This code is free and open source and you are permitted to use for your own projects under the [Apache 2.0 License](LICENSE) included in this repository. However, before deploying anything publicly using this codebase, you must:
 
 - Change [`_fonts/scss`](src/styles/_fonts.scss) — our fonts are proprietary and are not permitted for use outside of THE CITY's domain. Please change these fonts to ones you own publishing rights to, or use free, web-safe fonts instead.
-- Remove [`logo.svg`](src/assets/images/logo.svg) — our logo is trademarked and cannot be used without THE CITY's explicit permission. Please remove this logo [from the header](src/components/PageLayout.tsx), or swap in your own logo.
+- Remove [`logo.svg`](src/assets/images/logo.svg) — our logo is trademarked and cannot be used without THE CITY's explicit permission. Please remove this logo, or swap in your own logo.
 
 Also, as part of our license, we require that any online publication of work built using this software **include a credit and
-link to THE CITY**. The template includes the suggested sentence “Made with ♥ in NYC by THE CITY” in the page footer — feel free to leave that in.
+link to THE CITY**. The code includes the suggested sentence “Made with ♥ in NYC by THE CITY” in the page footer — feel free to leave that in.
 
 Lastly, we want to hear from you! We'd love to know if you are using this code to publish your own projects. Drop us a line at [data@thecity.nyc](mailto:data@thecity.nyc).
 

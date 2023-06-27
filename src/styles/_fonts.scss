@@ -1,16 +1,18 @@
+$font-base-url: "https://s3.amazonaws.com/static.thecity.nyc/fonts/";
+
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskSmBold15.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskSmBold15.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskSmBold15.woff") format("woff"),
+    url($font-base-url + "SharpGroteskSmBold15.woff2") format("woff2");
   font-weight: 900;
 }
 
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskSmBoldItalic15.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskSmBoldItalic15.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskSmBoldItalic15.woff") format("woff"),
+    url($font-base-url + "SharpGroteskSmBoldItalic15.woff2") format("woff2");
   font-weight: 900;
   font-style: italic;
 }
@@ -18,16 +20,16 @@
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskMedium20.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskMedium20.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskMedium20.woff") format("woff"),
+    url($font-base-url + "SharpGroteskMedium20.woff2") format("woff2");
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskMediumItalic20.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskMediumItalic20.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskMediumItalic20.woff") format("woff"),
+    url($font-base-url + "SharpGroteskMediumItalic20.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
 }
@@ -35,16 +37,16 @@
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskBook20.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskBook20.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskBook20.woff") format("woff"),
+    url($font-base-url + "SharpGroteskBook20.woff2") format("woff2");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskBookItalic20.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskBookItalic20.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskBookItalic20.woff") format("woff"),
+    url($font-base-url + "SharpGroteskBookItalic20.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
 }
@@ -52,16 +54,16 @@
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskLight20.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskLight20.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskLight20.woff") format("woff"),
+    url($font-base-url + "SharpGroteskLight20.woff2") format("woff2");
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Sharp Grotesk";
   font-display: auto;
-  src: url("/assets/fonts/SharpGroteskLightItalic20.woff") format("woff"),
-    url("/assets/fonts/SharpGroteskLightItalic20.woff2") format("woff2");
+  src: url($font-base-url + "SharpGroteskLightItalic20.woff") format("woff"),
+    url($font-base-url + "SharpGroteskLightItalic20.woff2") format("woff2");
   font-weight: 200;
   font-style: italic;
 }
